@@ -17,7 +17,7 @@ def sort_(s, n):
 
 
 #set_verbo = load('ziksionario.map')
-set_verbo = load('kvzawpeyvm/wvzalkawe/ziksionario.map')
+set_verbo = load('kaxvkaam/kvzawpeyvm/wvzalkawe/ziksionario.map')
 
 verbo_vy = list(set_verbo.keys())
 
@@ -125,8 +125,8 @@ otrasDesinencias.reverse()
 
 import re
 class Xoy:
-	
-    
+
+
     def __init__(self, idx='f0', regex='', wecun=False,cemkeci=1,inaafeyu_verbo=True, wigkazugun = '',kineupa = True, rakin = 0 ):
         self.id = idx
         if '^' not in regex:
@@ -144,10 +144,10 @@ class Xoy:
 
     def __repr__(self):
         return self.regex
-    
+
     def __eq__(self,kagelu):
         return self.id == kagelu.id and self.regex == kagelu.regex
-    
+
 
     def mvli(self,hemvl):
         if re.match(self.regex, hemvl):
@@ -161,7 +161,7 @@ class Xoy:
 
 
 
-'''        
+'''
 towrite = 'verbo_regex=[\n'
 
 cijka = open('zewmayal_xoy.py','w')
@@ -189,7 +189,7 @@ for ramtun in ramtuam:
         paux = input(f'VERBO -> {ramtun}:\t')
         p.append(paux)
 vidx = 0
-for regex in verbo_regex:  
+for regex in verbo_regex:
     towrite = towrite + f"Xoy('{p[0]+str(vidx)}, '{regex}', {p[2]},0,True, '<*metuno*>',{p[6]},{p[7]}),\n"
     vidx+=1
 
@@ -197,7 +197,7 @@ towrite= towrite+"]\nslotsIneke=[\n"
 Midx = 0
 for regex_set in slotsIneke:
     towrite = towrite + '['
-    for regex in regex_set: 
+    for regex in regex_set:
 
         p = []
         for ramtun in ramtuam:
@@ -228,7 +228,7 @@ for regex_set in slotsIneke:
 towrite = towrite + ']\n'
 
 
-       
+
 
 towrite= towrite+"desinenciasInd=[\n"
 vidx = 0
@@ -3289,7 +3289,7 @@ slotsIneke=[
              Xoy('sI3', '[nñ]{0,1}ma', False,1,False, 'afectar algo de alguien/algo / "quita"/ que te "caerle algo"',True,1),
              Xoy('sI30', 'ye', False,1,False, 'llevar, constante',True,1),
             ],
-    
+
             [Xoy('sI5', 'v{0,1}m', False,1,False, 'hacerlo a alguien/algo',True,2),
              Xoy('sI6', 'v{0,1}l', False,1,False,'hacer hacer algo, hacerle algo ',True,2),
             ],
@@ -3336,7 +3336,7 @@ slotsIneke=[
              Xoy('sI29', 'yeñma', False,1,False, '<*metuno*>',True,10),
              Xoy('sI30', 'ye', False,1,False, 'llevar, constante',True,10),
             ],
-            
+
             [Xoy('sI31', 'geye', False,1,False, '<*metuno*>',True,11),
              Xoy('sI32', 'gefal', False,1,False, '<*metuno*>',True,11),
              Xoy('sI33', 'ge', False,1,False, 'la acción es sobre la persona del verbo "me dijeron" "te escucharon" ',True,11),

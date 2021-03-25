@@ -15,7 +15,7 @@
 	<h1> Hemvl Wüzalkawe</h1>
 	<p> Mari mari! <p>
 	<p> Ta mu elkünulaeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
-	<form method="post" action="http://localhost:5000/wvzalkafe">	
+	<form method="post" action="/wvzalkafe">
         <label for="hemvl" id="vhemvl"> Nhemül</label>
 	<input type="text" id="hemvl" name="hemvl" placeholder="tüfa mu tukulfe tami nhemül">
 	<input type="submit" value="Wüzalkafige">
@@ -27,11 +27,11 @@
 		{% for hemvl in pegelam_hemvl['hemvlkawe'] %}
 			<tr><td>{{hemvl[0]}}</td> <td>{{hemvl[1]}}</td></tr>
 			<tr><td>Trad</td>
-<!--			{%for xoy in hemvl[2] %} 
+<!--			{%for xoy in hemvl[2] %}
 				<td>{{xoy}}<td>
 
 			{% endfor %} -->
-                <td>{{hemvl[2]}}</td> 
+                <td>{{hemvl[2]}}</td>
 			</tr>
 		{% endfor %}
 			</table>

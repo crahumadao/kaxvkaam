@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, render_template, request
-from kvzawpeyvm.wvzalkawe.koyam import *
+from kvzawpeyvm.wvzalkawe.koyam import Koyam
 import webbrowser
 import pickle
 import os
@@ -87,4 +87,5 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 5000, debug=True)
+    #app.run('0.0.0.0', 5000, debug=True)
+    app.run()
