@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<title> Nhemül Wüzalkawe </title>
+</head>
+<script type="text/javascript">
+	window.onload = function() {
+  document.getElementById("hemvl").focus();
+};
+</script>
+<body>
+
+	<h1> Hemvl Wüzalkawe</h1>
+	<p> Mari mari! <p>
+	<p> Ta mu elkünulaeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
+	<form method="post" action="http://localhost:5000/wvzalkafe">	
+        <label for="hemvl" id="vhemvl"> Nhemül</label>
+	<input type="text" id="hemvl" name="hemvl" placeholder="tüfa mu tukulfe tami nhemül">
+	<input type="submit" value="Wüzalkafige">
+	</form>
+	<p><b>{{pegelam_hemvl['eypial']}}</b></p>
+	<h2>{{pegelam_hemvl['vy']}}</h2>
+	{% if mvli == True %}
+			<table>
+		{% for hemvl in pegelam_hemvl['hemvlkawe'] %}
+			<tr><td>{{hemvl[0]}}</td> <td>{{hemvl[1]}}</td></tr>
+			<tr><td>Trad</td>
+<!--			{%for xoy in hemvl[2] %} 
+				<td>{{xoy}}<td>
+
+			{% endfor %} -->
+                <td>{{hemvl[2]}}</td> 
+			</tr>
+		{% endfor %}
+			</table>
+	{% else %}
+	{% endif %}
+
+</body>
+</html>
