@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, render_template, request
-kvzawpeyvm.wvzalkawe.koyam import *
+from kvzawpeyvm.wvzalkawe.koyam import *
 import webbrowser
 import pickle
 import os
