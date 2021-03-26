@@ -87,7 +87,7 @@ def chuchiWirintukun(txt):
         print('Unificado',)  
 
     if RAgey:
-        wirintukun.append('r0')
+        wirintukun.append(('r0',txt))
         print('Ragileo')
     if AZgey:
         wirintukun.append(('a0',reglas32.rulpawe(txt)))
