@@ -1,5 +1,8 @@
 from flask import Flask, render_template, jsonify, render_template, request
 from kvzawpeyvm.wvzalkawe.koyam import Koyam
+from kvzawpeyvm.rulpawirintukuwe.KimamWirintukun import chuchiWirintukun
+from kvzawpeyvm.rulpawirintukuwe.Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
+
 import webbrowser
 import pickle
 import os
@@ -7,14 +10,42 @@ import re
 
 app = Flask(__name__)
 
+def rupaka(txt):
+    return(txt)
+wirintukunVy = {
+                'a0'  : ('Azümchefe',            lambda w:reglas23.rulpawe(w)),
+                'r0'  : ('Ragileo',              lambda w:rupaka(w)),
+                'u0'  : ('Unificado',            lambda w:reglas21.rulpawe(w)),
+                'av1' : ('Azümchefe + Tx -> Tr', lambda w:re.sub('tx','tr',reglas23.rulpawe(w))),
+                'av2' : ('Azümchefe + G  -> Ng', lambda w:re.sub('g','ng',reglas23.rulpawe(w))),
+                'rv1' : ('Ragileo + C -> Ch',    lambda w:re.sub('c','ch',w)),
+                'rv2' : ('Ragileo + V -> Ü',     lambda w:re.sub('v','ü',w)),  
+                'rv3' : ('Ragileo + Z -> D',     lambda w:re.sub('z','d',w)),
+                'uv1' : ('Unificado + D -> Z',   lambda w:re.sub('d','z',reglas21.rulpawe(w))),
+                'uv2' : ('Unificado + Tr -> Tx', lambda w:re.sub('tr','tx',reglas21.rulpawe(w)))
+}
 
 def pepikaam_hemvl(hemvl, mvlica):
     hemvl.lower()
+    wirintukun= chuchiWirintukun(hemvl)
     xipaalu = dict()
-    if mvlica:
+
+    Nm=0
+    koyam=None
+    wirina=()
+    for wirin in wirintukun:
+        kkoyam = Koyam(wirin[1].lower())
+        kkoyam.zewmakoyamvn()
+        if Nm<len(kkoyam.kom_row):
+            Nm=len(kkoyam.kom_row)
+            koyam = kkoyam          
+            wirina = wirin 
+
+    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None):        
         xipaalu['vy'] = hemvl
-        koyam = Koyam(hemvl.lower())
-        koyam.zewmakoyamvn()
+        xipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
+#        koyam = Koyam(hemvl.lower())
+#        koyam.zewmakoyamvn()
         rr = len(koyam.kom_row)
         while True:
             koyam.kaxvrowvn()
@@ -22,7 +53,12 @@ def pepikaam_hemvl(hemvl, mvlica):
                 break
             else:
                 rr = len(koyam.kom_row)
+
         hemvlkawe = koyam.wirintuku_hemvl2()
+        hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
+        print('asd')
+        print(hemvlkawe)
+        print('asd')
         regexkawe = koyam.wirintuku_regex()
         wzkawe = koyam.wirintuku_wz()
         aux = []

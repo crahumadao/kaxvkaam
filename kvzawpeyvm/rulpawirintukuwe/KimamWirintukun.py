@@ -2,7 +2,7 @@
 
 #Cargar Reglas AZVMCEFE UNIFICADO RAGILEO
 import re
-from Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
+from kvzawpeyvm.rulpawirintukuwe.Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
 
 
 
@@ -101,7 +101,7 @@ def chuchiWirintukun(txt):
         RA2 = ragileo2ca(txtalt)    
         RAgey = RA1 and RA2 
         if RAgey:
-            wirintukun.append(('rv1',reglas12.rulpawe(txt)))
+            wirintukun.append(('rv1',txtalt))
             print('ragileo nielu CH')
             
         txtalt = txt
@@ -110,7 +110,7 @@ def chuchiWirintukun(txt):
         RA2 = ragileo2ca(txtalt)
         RAgey = RA1 and RA2
         if RAgey:
-            wirintukun.append('rv2')
+            wirintukun.append(('rv2',txtalt))
             print('ragileo nielu Ü')
         
         txtalt =txt
@@ -119,7 +119,7 @@ def chuchiWirintukun(txt):
         RA2 = ragileo2ca(txtalt)
         RAgey = RA1 and RA2
         if RAgey:
-            wirintukun.append('rv3')
+            wirintukun.append(('rv3',txtalt))
             print('ragileo nielu D')
 
         #Unificado nielu Z
@@ -129,7 +129,7 @@ def chuchiWirintukun(txt):
         UN2 = unificado2ca(txtalt) 
         UNgey = UN1 and UN2
         if UNgey:
-            wirintukun.append('uv1')
+            wirintukun.append(('uv1',reglas12.rulpawe(txtalt)))
             print('Unificado nielu Z')
 
 
@@ -141,7 +141,7 @@ def chuchiWirintukun(txt):
         UN2 = unificado2ca(txtalt)    
         UNgey = UN1 and UN2 
         if UNgey:
-            wirintukun.append('uv2')
+            wirintukun.append(('uv2',reglas12.rulpawe(txtalt)))
             print('Unificado nielu tx')
 
         #Azvmcefe nielu Tr
@@ -151,7 +151,7 @@ def chuchiWirintukun(txt):
         AZ2 = unificado2ca(txtalt)    
         AZgey = AZ1 and AZ2 
         if AZgey:
-            wirintukun.append('av1')
+            wirintukun.append(('av1',reglas32.rulpawe(txtalt)))
             print('Azvmcefe nielu tr')
 
         #Azvmcefe nielu Ng
@@ -163,25 +163,11 @@ def chuchiWirintukun(txt):
         AZ2 = unificado2ca(txtalt)    
         AZgey = AZ1 and AZ2 
         if AZgey:
-            wirintukun.append('av2')
+            wirintukun.append(('av2',reglas32.rulpawe(txtalt)))
             print('Unificado nielu ng')
     if len(wirintukun)==0:  
         print('azvmgelai tati wirintukun')
-        
-
-
-
-fey 
-vey 
-bey
-hacer validacion rapido
-en internet
-en castellano 
-beley 
-interfaz
-
-
-
+    return(wirintukun)        
         
 '''        
 import os        

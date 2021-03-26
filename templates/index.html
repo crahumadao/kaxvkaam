@@ -4,6 +4,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<meta charset="UTF-8">
 	<title> Nhemül Wüzalkawe </title>
+    <link href="{{url_for('static',filename = 'css/bootstrap.min.css')}}">
 </head>
 <script type="text/javascript">
 	window.onload = function() {
@@ -12,29 +13,60 @@
 </script>
 <body>
 
-	<h1> Hemvl Wüzalkawe</h1>
-	<p> Mari mari! <p>
-	<p> Ta mu elkünulaeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
+	<table style="width:100%">
+        <tr>
+            <td><h1> Hemvl Wüzalkawe</h1></td>
+            <td> <h1> "Separador de Palabras"</h1></td>
+        </tr>
+    </table>
+
+	<table style="width:100%"><tr><td><p> Mari mari! <p></td><td><p> Hola! <p></td></tr></table>
+
+	<table style="width:100%"> <td><p> Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p></td>
+	<td><p> Aquí te dejo una herramienta para que te ayude a aprender más Mapuzugun, espero queu con esto entiendas más este idioma (el mejor)).</p></td></table>
+
+
+    <div style='text-align: center'>
 	<form method="post" action="/wvzalkafe">
         <label for="hemvl" id="vhemvl"> Nhemül</label>
 	<input type="text" id="hemvl" name="hemvl" placeholder="tüfa mu tukulfe tami nhemül">
 	<input type="submit" value="Wüzalkafige">
 	</form>
+    <div>
+
 	<p><b>{{pegelam_hemvl['eypial']}}</b></p>
 	<h2>{{pegelam_hemvl['vy']}}</h2>
-	{% if mvli == True %}
-			<table>
-		{% for hemvl in pegelam_hemvl['hemvlkawe'] %}
-			<tr><td>{{hemvl[0]}}</td> <td>{{hemvl[1]}}</td></tr>
-			<tr><td>Trad</td>
-<!--			{%for xoy in hemvl[2] %}
-				<td>{{xoy}}<td>
+	<table style="width:100%">
+            <tr>
+                <td>
+                    <h4>Wirintukugei</h4>
+                </td>
 
-			{% endfor %} -->
-                <td>{{hemvl[2]}}</td>
-			</tr>
-		{% endfor %}
+                <td>
+                <h4>Está escrito en</h4>
+                </td>
+
+            </tr>
+            <tr>
+                <td><h3><b>{{pegelam_hemvl['wirintukun']}}</b> mu </h3></td>
+
+                <td><h3><b>{{pegelam_hemvl['wirintukun']}}</b>    </h3></td>
+            </tr>
+    </table>
+    </div>
+	{% if mvli == True %}
+			
+
+    <table>
+		{% for hemvl in pegelam_hemvl['hemvlkawe'] %}
+			<tr>{{hemvl[0]}}</tr>
+            <tr><p>{{hemvl[1]}}</p></tr>
+			<tr>{{hemvl[2]}}</tr>
 			</table>
+            </br>
+            </br>
+            </br>   
+		{% endfor %}
 	{% else %}
 	{% endif %}
 
