@@ -1,74 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+.wiriam {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 	<meta charset="UTF-8">
 	<title> Nhemül Wüzalkawe </title>
-    <link href="{{url_for('static',filename = 'css/bootstrap.min.css')}}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/appstyles.css') }}">
 </head>
-<script type="text/javascript">
-	window.onload = function() {
-  document.getElementById("hemvl").focus();
-};
-</script>
+<script src="{{ url_for('static',filename='appscript.js') }}"> </script>
 <body>
 
 	<table style="width:100%">
         <tr>
-            <td><h1> Hemvl Wüzalkawe</h1></td>
-            <td> <h1> "Separador de Palabras"</h1></td>
+            <td colspan="3">
+                <h3> Nhemvl Wüzalkawe</h3>
+                <p>Mari mari!<p>
+                <p>Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
+            </td>
+            <td colspan="3">
+                <h3>Separador de Palabras</h3>
+                <p>Hola!<p>
+                <p> Aquí te dejo una herramienta para que te ayude a aprender más Mapuzugun, espero que con esto entiendas más este idioma (el mejor).</p>
+            </td>
         </tr>
     </table>
-
-	<table style="width:100%"><tr><td><p> Mari mari! <p></td><td><p> Hola! <p></td></tr></table>
-
-	<table style="width:100%"> <td><p> Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p></td>
-	<td><p> Aquí te dejo una herramienta para que te ayude a aprender más Mapuzugun, espero queu con esto entiendas más este idioma (el mejor).</p></td></table>
-
-
     <div style='text-align: center'>
 	<form method="post" action="/wvzalkafe">
         <label for="hemvl" id="vhemvl"> Nhemül</label>
 	<input type="text" id="hemvl" name="hemvl" placeholder="tüfa mu tukulfe tami nhemül">
 	<input type="submit" value="Wüzalkafige">
 	</form>
-    <div>
+<hr>
 
-	<p><b>{{pegelam_hemvl['eypial']}}</b></p>
-	<h2>{{pegelam_hemvl['vy']}}</h2>
-    </div>
+	<p>{{pegelam_hemvl['eypial']}} | {{pegelam_hemvl['decir']}}</p> 
 	{% if mvli == True %}
-	<table style="width:100%">
-            <tr>
-                <td>
-                    <h4>Wirintukugei</h4>
-                </td>
-
-                <td>
-                <h4>Está escrito en</h4>
-                </td>
-
-            </tr>
-            <tr>
-                <td><h3><b>{{pegelam_hemvl['wirintukun']}}</b> mu </h3></td>
-
-                <td><h3><b>{{pegelam_hemvl['wirintukun']}}</b>    </h3></td>
+    <h4><p><b>{{pegelam_hemvl['vy']}}</b></p></h4>
+    <h5><p>Wirintukugelu {{pegelam_hemvl['wirintukun']}} mu txokifiñ |Creo que  está escrito en {{pegelam_hemvl['wirintukun']}}</p></h5>
             </tr>
     </table>
 			
-
-    <table>
-		{% for hemvl in pegelam_hemvl['hemvlkawe'] %}
-			<tr>{{hemvl[0]}}</tr>
-            <tr><p>{{hemvl[1]}}</p></tr>
-			<tr>{{hemvl[2]}}</tr>
-			</table>
-            </br>
-            </br>
-            </br>   
+        {% for hemvl in pegelam_hemvl['hemvlkawe'] %}
+        <details>
+            <summary style="font-size: 25px">{{hemvl[0]}}</summary>
+                <table class="wiriam" style="width:100%">
+                    <tr class="wiriam">
+                        {% for xoyhemvl in hemvl[3] %}
+                            <th class="wiriam">{{xoyhemvl}}</th>
+                        {% endfor %}
+                    </tr>
+                    <tr class="wiriam">
+                        {% for xoyhemvl in hemvl[2] %}
+                            <td class="wiriam">{{xoyhemvl}}</td>
+                        {% endfor %}                        
+                    </tr>
+                    
+                </table>
+                <details>            
+                    <summary>Expresion regular (Para computación)</p></summary>
+                    <p>{{hemvl[1]}}<p>
+                </details>
+        </details>
 		{% endfor %}
 	{% else %}
 	{% endif %}
-
 </body>
 </html>
