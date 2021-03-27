@@ -40,8 +40,7 @@ def pepikaam_hemvl(hemvl, mvlica):
             Nm=len(kkoyam.kom_row)
             koyam = kkoyam          
             wirina = wirin 
-
-    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None):        
+    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:        
         xipaalu['vy'] = hemvl
         xipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
 #        koyam = Koyam(hemvl.lower())
@@ -79,7 +78,7 @@ def pepikaam_hemvl(hemvl, mvlica):
         xapvmal = []
         xipaalu['eypial'] = 'Femgechi wüzalkafiñ'
         xipaalu['decir'] = 'Así lo separé'
-
+        xipaalu['xipai'] = True
         if len(hemvlkawe) > 0:
             for i in range(len(hemvlkawe)):
                 xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i],hemvlkawew[i]))
@@ -91,6 +90,7 @@ def pepikaam_hemvl(hemvl, mvlica):
         xipaalu['vy'] = hemvl
         xipaalu['eypial'] = 'Pelan tami nhemül, ka kiñe rupa tukulfe'
         xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
+        xipaalu['xipai'] = False
     return xipaalu
 
 
@@ -108,13 +108,16 @@ def pegelwe():
         if len(hemvl) > 0:
             mvli = True
             pegelam_hemvl = pepikaam_hemvl(hemvl, mvli)
+            mvli = pegelam_hemvl['xipai']
         else:
             mvli = False
             pegelam_hemvl = pepikaam_hemvl(hemvl, mvli)
+            mvli = pegelam_hemvl['xipai']
     else:
         mvli = False
         hemvl = ''
         pegelam_hemvl = pepikaam_hemvl(hemvl, mvli)
+        mvli = pegelam_hemvl['xipai']
     return render_template('index.html', mvli=mvli, pegelam_hemvl=pegelam_hemvl)
 
 
