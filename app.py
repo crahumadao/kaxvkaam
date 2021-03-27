@@ -56,11 +56,10 @@ def pepikaam_hemvl(hemvl, mvlica):
 
         hemvlkawe = koyam.wirintuku_hemvl2()
         hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
-        print('asd')
-        print(hemvlkawe)
-        print('asd')
+        hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
         regexkawe = koyam.wirintuku_regex()
         wzkawe = koyam.wirintuku_wz()
+        wzkawe = [h.split('-')[1:] for h in wzkawe]
         aux = []
         aux2 = []
         for item in regexkawe:
@@ -79,17 +78,19 @@ def pepikaam_hemvl(hemvl, mvlica):
         # hemvlKoyam = re.sub(r'\t','    ',hemvlKoyam)
         xapvmal = []
         xipaalu['eypial'] = 'Femgechi wüzalkafiñ'
+        xipaalu['decir'] = 'Así lo separé'
 
         if len(hemvlkawe) > 0:
             for i in range(len(hemvlkawe)):
-                xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i]))
+                xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i],hemvlkawew[i]))
             xipaalu['hemvlkawe'] = xapvmal
 
 
     else:
         xipaalu = dict()
         xipaalu['vy'] = hemvl
-        xipaalu['eypial'] = 'Gelay zugu, ka kiñe rupa tukulfe'
+        xipaalu['eypial'] = 'Pelan tami nhemül, ka kiñe rupa tukulfe'
+        xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
     return xipaalu
 
 
