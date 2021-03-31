@@ -17,8 +17,8 @@ def sort_(s, n):
 
 
 #set_verbo = load('ziksionario.map')
-set_verbo = load('kvzawpeyvm/wvzalkawe/ziksionario.map')
-#set_verbo = load('kaxvkaam/kvzawpeyvm/wvzalkawe/ziksionario.map')
+#set_verbo = load('kvzawpeyvm/wvzalkawe/ziksionario.map')
+set_verbo = load('kaxvkaam/kvzawpeyvm/wvzalkawe/ziksionario.map')
 
 verbo_vy = list(set_verbo.keys())
 
