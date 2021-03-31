@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, jsonify, render_template, request, redirect, url_for, flash, current_app
 from kvzawpeyvm.wvzalkawe.koyam import Koyam
 from kvzawpeyvm.rulpawirintukuwe.KimamWirintukun import chuchiWirintukun
 from kvzawpeyvm.rulpawirintukuwe.Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
@@ -11,7 +11,7 @@ import re
 
 app = Flask(__name__)
 app.secret_key = b'k#1"E/0$j&2U_9=n'
-elkvnualkellunzugu = open('eypietew.txt','a')
+
 def rupaka(txt):
     return(txt)
 wirintukunVy = {
@@ -130,13 +130,16 @@ def pegelwe():
 def werkvlal_msg():
     flash('Recibimos tu mensjae, gracias por ayudarnos / Llowfiiñ tami werkvlfiel, mañumuwiyiñ tami kellumufiel ')
     fewla = str(datetime.datetime.now())[:-7]
-
+    eypi = url_for('static',filename='eypietew.txt')
+    elkvnualkellunzugu = open(eypi[1:],'a+')
+    
     if request.method == 'POST':
         kellun = request.form.get('kellun')
         fewlahemvl = request.form.get('fewlahemvl')
     msg = f'{fewla}:\t("{fewlahemvl}" nhemül mu):\t MSG: {kellun} :MSG\n'
     print(msg)
     elkvnualkellunzugu.write(msg)
+    elkvnualkellunzugu.close()
     return redirect(url_for('konwe'))
 
 @app.errorhandler(404)
