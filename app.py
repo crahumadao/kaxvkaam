@@ -21,7 +21,7 @@ wirintukunVy = {
                 'av1' : ('Azümchefe + Tx -> Tr', lambda w:re.sub('tx','tr',reglas23.rulpawe(w))),
                 'av2' : ('Azümchefe + G  -> Ng', lambda w:re.sub('g','ng',reglas23.rulpawe(w))),
                 'rv1' : ('Ragileo + C -> Ch',    lambda w:re.sub('c','ch',w)),
-                'rv2' : ('Ragileo + V -> Ü',     lambda w:re.sub('v','ü',w)),  
+                'rv2' : ('Ragileo + V -> Ü',     lambda w:re.sub('v','ü',w)),
                 'rv3' : ('Ragileo + Z -> D',     lambda w:re.sub('z','d',w)),
                 'uv1' : ('Unificado + D -> Z',   lambda w:re.sub('d','z',reglas21.rulpawe(w))),
                 'uv2' : ('Unificado + Tr -> Tx', lambda w:re.sub('tr','tx',reglas21.rulpawe(w)))
@@ -40,9 +40,9 @@ def pepikaam_hemvl(hemvl, mvlica):
         kkoyam.zewmakoyamvn()
         if Nm<len(kkoyam.kom_row):
             Nm=len(kkoyam.kom_row)
-            koyam = kkoyam          
-            wirina = wirin 
-    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:        
+            koyam = kkoyam
+            wirina = wirin
+    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:
         xipaalu['vy'] = hemvl
         xipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
 #        koyam = Koyam(hemvl.lower())
@@ -54,7 +54,7 @@ def pepikaam_hemvl(hemvl, mvlica):
                 break
             else:
                 rr = len(koyam.kom_row)
-        
+
         hemvlkawe = koyam.wirintuku_hemvl2()
         hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
         hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
@@ -130,16 +130,21 @@ def pegelwe():
 def werkvlal_msg():
     flash('Recibimos tu mensjae, gracias por ayudarnos / Llowfiiñ tami werkvlfiel, mañumuwiyiñ tami kellumufiel ')
     fewla = str(datetime.datetime.now())[:-7]
+    basepath = os.path.abspath(".")
     eypi = url_for('static',filename='eypietew.txt')
-    elkvnualkellunzugu = open(eypi[1:],'a+')
-    
+
+
+    elkvnualkellunzugu = open(basepath+eypi,'a+')
+
     if request.method == 'POST':
         kellun = request.form.get('kellun')
         fewlahemvl = request.form.get('fewlahemvl')
-    msg = f'{fewla}:\t("{fewlahemvl}" nhemül mu):\t MSG: {kellun} :MSG\n'
-    print(msg)
-    elkvnualkellunzugu.write(msg)
-    elkvnualkellunzugu.close()
+        msg = f'{fewla}:\t NHML: {fewlahemvl} :NHML\t MSG: {kellun} :MSG\n'
+        elkvnualkellunzugu.write(msg)
+        elkvnualkellunzugu.close()
+    else:
+        print('requested with get')
+
     return redirect(url_for('konwe'))
 
 @app.errorhandler(404)
