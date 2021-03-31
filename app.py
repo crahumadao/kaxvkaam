@@ -1,15 +1,17 @@
-from flask import Flask, render_template, jsonify, render_template, request
+from flask import Flask, render_template, jsonify, render_template, request, redirect, url_for, flash
 from kvzawpeyvm.wvzalkawe.koyam import Koyam
 from kvzawpeyvm.rulpawirintukuwe.KimamWirintukun import chuchiWirintukun
 from kvzawpeyvm.rulpawirintukuwe.Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
-
+import time
+import datetime
 import webbrowser
 import pickle
 import os
 import re
 
 app = Flask(__name__)
-
+app.secret_key = b'k#1"E/0$j&2U_9=n'
+elkvnualkellunzugu = open('eypietew.txt','a')
 def rupaka(txt):
     return(txt)
 wirintukunVy = {
@@ -52,7 +54,7 @@ def pepikaam_hemvl(hemvl, mvlica):
                 break
             else:
                 rr = len(koyam.kom_row)
-
+        
         hemvlkawe = koyam.wirintuku_hemvl2()
         hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
         hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
@@ -78,7 +80,10 @@ def pepikaam_hemvl(hemvl, mvlica):
         xapvmal = []
         xipaalu['eypial'] = 'Femgechi wüzalkafiñ'
         xipaalu['decir'] = 'Así lo separé'
-        xipaalu['xipai'] = True
+        if rr==0:
+            xipaalu['xipai'] = False
+        else:
+            xipaalu['xipai'] = True
         if len(hemvlkawe) > 0:
             for i in range(len(hemvlkawe)):
                 xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i],hemvlkawew[i]))
@@ -120,6 +125,19 @@ def pegelwe():
         mvli = pegelam_hemvl['xipai']
     return render_template('index.html', mvli=mvli, pegelam_hemvl=pegelam_hemvl)
 
+
+@app.route('/kellual',methods=['POST','GET'])
+def werkvlal_msg():
+    flash('Recibimos tu mensjae, gracias por ayudarnos / Llowfiiñ tami werkvlfiel, mañumuwiyiñ tami kellumufiel ')
+    fewla = str(datetime.datetime.now())[:-7]
+
+    if request.method == 'POST':
+        kellun = request.form.get('kellun')
+        fewlahemvl = request.form.get('fewlahemvl')
+    msg = f'{fewla}:\t("{fewlahemvl}" nhemül mu):\t MSG: {kellun} :MSG\n'
+    print(msg)
+    elkvnualkellunzugu.write(msg)
+    return redirect(url_for('konwe'))
 
 @app.errorhandler(404)
 def page_not_found(error):

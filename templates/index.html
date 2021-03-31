@@ -6,6 +6,10 @@
   border: 1px solid black;
   border-collapse: collapse;
 }
+
+textarea {
+        width: 300px;
+        height: 100px;}
 </style>
 	<meta charset="UTF-8">
 	<title> Nhemül Wüzalkawe </title>
@@ -17,29 +21,30 @@
 	<table style="width:100%">
         <tr>
             <td colspan="3">
-                <h3> Nhemvl Wüzalkawe</h3>
-                <p>Mari mari!<p>
-                <p>Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
-            </td>
-            <td colspan="3">
                 <h3>Separador de Palabras</h3>
                 <p>Hola!<p>
                 <p> Aquí te dejo una herramienta para que te ayude a aprender más Mapuzugun, espero que con esto entiendas más este idioma (el mejor).</p>
             </td>
+            <td colspan="3">
+                <h3> Nhemül Wüzalkawe</h3>
+                <p>Mari mari!<p>
+                <p>Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
+            </td>
+            
         </tr>
     </table>
     <div style='text-align: center'>
 	<form method="post" action="/wvzalkafe">
-        <label for="hemvl" id="vhemvl"> Nhemül</label>
-	<input type="text" id="hemvl" name="hemvl" placeholder="tüfa mu tukulfe tami nhemül">
-	<input type="submit" value="Wüzalkafige">
+        <label for="hemvl" id="vhemvl"> Palabra / Nhemül</label>
+	<input type="text" id="hemvl" name="hemvl" placeholder="Aqui pon tu palabra /tüfa mu tukulfe tami nhemül">
+	<input type="submit" value="Separalo / Wüzalkafige">
 	</form>
 <hr>
 
 	<p>{{pegelam_hemvl['eypial']}} | {{pegelam_hemvl['decir']}}</p> 
 	{% if mvli == True %}
     <h4><p><b>{{pegelam_hemvl['vy']}}</b></p></h4>
-    <h5><p>Wirintukugelu {{pegelam_hemvl['wirintukun']}} mu txokifiñ |Creo que  está escrito en {{pegelam_hemvl['wirintukun']}}</p></h5>
+    <h5><p>Creo que  está escrito en {{pegelam_hemvl['wirintukun']}}  |  Wirintukugelu {{pegelam_hemvl['wirintukun']}} mu txokifiñ </p></h5>
             </tr>
     </table>
 			
@@ -67,5 +72,26 @@
 		{% endfor %}
 	{% else %}
 	{% endif %}
+    </br>
+    <hr>
+    </br>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+    <form method="post" action="/kellual" id="kellual">
+    <label for="kellun" id="vkellual"> Comentario / Tami chumgentufiel tati küzawpeyüm</label>
+    <textarea id="kellual" name="kellun" placeholder="Aquí ponme como podría estar mejor nuestra herramienta |             | tüfa mu tukulelen chumgechi zoy kümeleafel taiñ küzawpeyüm"></textarea>
+	<input type="submit" value="Envíalo / Werkülfige">
+    <input type="hidden" id="kellual" name="fewlahemvl" value="{{pegelam_hemvl['vy']}}">
+	</form>
+
+
 </body>
 </html>
