@@ -167,12 +167,12 @@ class Koyam:  # "Roble" // Tree
                             except:
                                 print('gewelai')
                             
-                        else:
-                            if not row.xoy.wecun and row.xoy.rakin>0:
-                                try:                                
-                                    del self.kom_row[self.kom_row.index(row)]
-                                except:
-                                    print('gewelai')
+                        #else:
+                        #    if not row.xoy.wecun and row.xoy.rakin>0:
+                        #        try:                                
+                        #            del self.kom_row[self.kom_row.index(row)]
+                        #        except:
+                        #            print('gewelai')
         
                 
                     else:
