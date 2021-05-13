@@ -60,7 +60,14 @@ class Koyam:  # "Roble" // Tree
                     self.rowgetui(xoy,True,pre_xoy)
                     if rr< len(self.kom_row):
                         tachirakinid.append(xoy.id)
-             
+
+            for xoy in sustantivosAdjetivos:  # Se buscan coincidencias con cada expresion regular de la lista de verbos
+                if xoy not in pre_xoy or not xoy.kineupa:
+                    rr = len(self.kom_row)
+                    self.rowgetui(xoy,True,pre_xoy)
+                    if rr< len(self.kom_row):
+                        tachirakinid.append(xoy.id)
+                         
 
         if not self.folil_amci:
             for xoy_set in slotsIneke:  # Se buscan coincidencias con cada lista de expresiones regulares de
