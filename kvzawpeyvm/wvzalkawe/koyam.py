@@ -42,7 +42,7 @@ class Koyam:  # "Roble" // Tree
 #        print(f'Entugei ti {self.xoys} aliwen mu')
         
 
-    def zewmakoyamvn(self,pre_xoy=[]):  # zewmaam tati koyam
+    def zewmakoyamvn(self,pre_xoy=[],folil = True):  # zewmaam tati koyam
         tachirakinid=[]
         pre_xoy =pre_xoy+ [self.xoy]
         if len(self.hemvl) <= 0:  # prueba si es que el largo es 0 para la palabra
@@ -55,21 +55,23 @@ class Koyam:  # "Roble" // Tree
             return
         if self.xoy.inafeyu_verbo:
             for xoy in verbo_regex:  # Se buscan coincidencias con cada expresion regular de la lista de verbos
-                if xoy not in pre_xoy or not xoy.kineupa:
-                    rr = len(self.kom_row)
-                    self.rowgetui(xoy,True,pre_xoy)
-                    if rr< len(self.kom_row):
-                        tachirakinid.append(xoy.id)
-
-            for xoy in sustantivosAdjetivos:  # Se buscan coincidencias con cada expresion regular de la lista de verbos
-                if xoy not in pre_xoy or not xoy.kineupa:
-                    rr = len(self.kom_row)
-                    self.rowgetui(xoy,True,pre_xoy)
-                    if rr< len(self.kom_row):
-                        tachirakinid.append(xoy.id)
+                if not  xoy.cemkeci == 1010 or (xoy.cemkeci==1010 and self.folil_amci):     
+                    if xoy not in pre_xoy or not xoy.kineupa:
+                        rr = len(self.kom_row)
+                        self.rowgetui(xoy,True,pre_xoy)
+                        if rr< len(self.kom_row):
+                            tachirakinid.append(xoy.id)
+            if self.folil_amci and self.rakin_row == 0:
+                for xoy in sustantivosAdjetivos:  # Se buscan coincidencias con cada expresion regular de la lista de verbos
+                    if not  xoy.cemkeci == 1010 or (cemkeci==1010 and self.folil_amci):     
+                        if xoy not in pre_xoy or not xoy.kineupa :
+                            rr = len(self.kom_row)
+                            self.rowgetui(xoy,True,pre_xoy)
+                            if rr< len(self.kom_row):
+                                tachirakinid.append(xoy.id)
                          
 
-        if not self.folil_amci:
+        if not self.folil_amci :
             for xoy_set in slotsIneke:  # Se buscan coincidencias con cada lista de expresiones regulares de
 
                     for xoy in xoy_set: # Se buscan coincidencias con cada expresion regular de la lista de

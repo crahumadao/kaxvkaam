@@ -45,8 +45,7 @@ textarea {
 	{% if mvli == True %}
     <h4><p><b>{{pegelam_hemvl['vy']}}</b></p></h4>
     <h5><p>Creo que  está escrito en {{pegelam_hemvl['wirintukun']}}  |  Wirintukugelu {{pegelam_hemvl['wirintukun']}} mu txokifiñ </p></h5>
-            </tr>
-    </table>
+            
 			
         {% for hemvl in pegelam_hemvl['hemvlkawe'] %}
         <details>
@@ -96,58 +95,122 @@ textarea {
 
     <hr>
 
-      /   
+  
 
-	<table style="width:100%">
-        <tr>
-            <td colspan="3">
-                <h5>Para entender esta herramienta  </h5>
-                <p> Este es un texto de ejemplo para que entiendas como usar esta herramienta</p>
-            </td>
-            <td colspan="3">
-                <h5> Azümam tÜfachi küzawpeyüm</h5>
-                <p> Tüfa kiñe wirintukun tami azümafiel chumgechi  püneafiel tüfachi küzawpeyüm </p>
-            </td>
-            
-        </tr>
+    <h4> Ejemplos/Azümam </h4>
 
+               <p> Aquí hay algunas palabras de ejemplo para que entiendas como usar esta herramienta</p>
+               <p> Tüfa  mülei kiñeke nhemül tami azümafiel chumgechi  püneafiel tüfachi küzawpeyüm </p>
 
-        <tr>
-            <td colspan="3">
-                <p> wazkü  = vi hervir; 
-                    i      = El/Ella </p>
-            </td>
-            <td colspan="3">
-                <p> Esta palabra se puede traducir como (el/ella/es@) "hirvió"</p>
-            </td>
-            
-        </tr>
+            <p><b> Wazküy</b>, que significa "hirvió" se podría separar como:</p>
+            <details>
+            <summary style="font-size: 15px">-wazkü-y</summary>
+                <table class="wiriam" style="width:100%">
+                    <tr class="wiriam">
+                        
+                            <th class="wiriam">wazkü</th>
+                        
+                            <th class="wiriam">y</th>
+                        
+                    </tr>
+                    <tr class="wiriam">
+                        
+                            <td class="wiriam"> vi hervir ║</td>
+                        
+                            <td class="wiriam">El/Ella  </td>
+                                                
+                    </tr>
+                    
+                </table>
+                <details>            
+                    <summary>Expresion regular (Para computación)</p></summary>
+                    <p>[&#39;^wazkv&#39;, &#39;^[yi]$&#39;]<p>
+                </details>
+        </details>-
 
-
-        <tr>
-            <td colspan="3">
-                <p> amu 	= vi ire, andar, continuar, avanzar ;
-                    a       = futuro ; 
-                    iñ      = Nosotros (mas de 2 personas)</p>
-            </td>
-            <td colspan="3">
-                <p> Esta palabra se puede traducir como "Nosotros iremos"</p>
-            </td>
-            
-        </tr>
-
-        <tr>
-            <td colspan="3">
-                <p> ayüwküle = vi estar alegre, estar contento ;
-                    n       = 	Yo /o el verbo "puro"</p>
-            </td>
-            <td colspan="3">
-                <p> Esta palabra se puede traducir como "Estoy contento" o "Estar contento"</p>
-            </td>
-            
-        </tr>
-
-    </table>
+        <b> Amuaiñ</b>, que significa "iremos" se podría separar como:
+        <details>
+            <summary style="font-size: 15px">-amu-a-iñ</summary>
+                <table class="wiriam" style="width:100%">
+                    <tr class="wiriam">
+                        
+                            <th class="wiriam">amu</th>
+                        
+                            <th class="wiriam">a</th>
+                        
+                            <th class="wiriam">iñ</th>
+                        
+                    </tr>
+                    <tr class="wiriam">
+                        
+                            <td class="wiriam"> vi irse, andar, continuar, avanzar ║</td>
+                        
+                            <td class="wiriam">futuro</td>
+                        
+                            <td class="wiriam">Nosotros (mas de 2 personas)</td>
+                                                
+                    </tr>
+                    
+                </table>
+                <details>            
+                    <summary>Expresion regular (Para computación)</p></summary>
+                    <p>[&#39;^amu&#39;, &#39;^y{0,1}a&#39;, &#39;^i{0,1}y{0,1}iñ$&#39;]<p>
+                </details>
+        </details>
+        <b> ayüwkülen</b>, que significa "estoy contento/feliz" se podría separar como:
+      <details>
+            <summary style="font-size: 15px">-ayüwküle-n</summary>
+                <table class="wiriam" style="width:100%">
+                    <tr class="wiriam">
+                        
+                            <th class="wiriam">ayüwküle</th>
+                        
+                            <th class="wiriam">n</th>
+                        
+                    </tr>
+                    <tr class="wiriam">
+                        
+                            <td class="wiriam"> vi estar alegre, estar contento ║</td>
+                        
+                            <td class="wiriam">Yo /o el verbo &#34;puro&#34;</td>
+                                                
+                    </tr>
+                    
+                </table>
+                <details>            
+                    <summary>Expresion regular (Para computación)</p></summary>
+                    <p>[&#39;^ayvwkvle&#39;, &#39;^v{0,1}n$&#39;]<p>
+                </details>
+        </details>
+		
+        <details>
+            <summary style="font-size: 15px">-ayüw-küle-n</summary>
+                <table class="wiriam" style="width:100%">
+                    <tr class="wiriam">
+                        
+                            <th class="wiriam">ayüw</th>
+                        
+                            <th class="wiriam">küle</th>
+                        
+                            <th class="wiriam">n</th>
+                        
+                    </tr>
+                    <tr class="wiriam">
+                        
+                            <td class="wiriam"> vi alegrarse, contentarse ║,</td>
+                        
+                            <td class="wiriam">estar</td>
+                        
+                            <td class="wiriam">Yo /o el verbo &#34;puro&#34;</td>
+                                                
+                    </tr>
+                    
+                </table>
+                <details>            
+                    <summary>Expresion regular (Para computación)</p></summary>
+                    <p>[&#39;^ayvw&#39;, &#39;^kvle&#39;, &#39;^v{0,1}n$&#39;]<p>
+                </details>
+        </details>
 
 </br>
 <hr>
@@ -155,7 +218,7 @@ textarea {
 <table style="width:100%">
         <tr>
             <td colspan="3">
-       <p>Ka femgechi,Tüfa mu elkünugeai kiñe wirintukun tami entual nhemül tami püneafiel kÜzawpeyüm mu</p>
+       <p>Ka femgechi,Tüfa mu elkünugeai kiñe wirintukun tami entual nhemül tami püneafiel küzawpeyüm mu</p>
             </td>
             <td colspan="3">
                 <p>También, Aquí se dejará un texto para que saques palabras y las uses en la herramienta. </p>
