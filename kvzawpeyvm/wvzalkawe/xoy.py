@@ -2782,7 +2782,7 @@ Xoy('vI2503','maynte', False,0,True,' vi haber en esta cantidad, ser de este tam
 Xoy('vI2504','may', False,0,True,' exp he aquí ║, exp eso es, él es, sí ║,, exp sí, por supuesto ║, vi asentir, obedecer ║, exp de saludo o despedida buenas noches ║',False,0),
 Xoy('vI2505','fam', False,0,True,' vtr hacer así (de esta manera; →fem) ║, ~',False,0),
 Xoy('vI2506','fale', False,0,True,' vi ser así (de esta manera; →fele) ║',False,0),
-Xoy('vI2507','fa', False,0,True,' pron dem. éste, ésta, éstos, éstas ║, vi volverse así (de esta 1 manera; →fe ) ║',False,0),
+Xoy('vI2507','fa', False,1010,True,' pron dem. éste, ésta, éstos, éstas ║, vi volverse así (de esta 1 manera; →fe ) ║',False,0),
 Xoy('vI2508','eyvtu', False,0,True,' vi gemir, quejarse  F',False,0),
 Xoy('vI2509','epuntv', False,0,True,' vi tener mellizos ║',False,0),
 Xoy('vI2510','epewtu', False,0,True,' vtr contar una,historia a',False,0),
@@ -3297,7 +3297,7 @@ slotsIneke=[
             ],
 
             [Xoy('sI7', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc)',True,3),
-             Xoy('sI8', 'ka', False,1,False, 'acción que se repite, acción intensa, puede ser un verbo de algo Ej: nütxam -> nütxamkan',True,3),
+             Xoy('sI8', 'ka', False,1,False, 'acción que se repite o intensa, sirve para  generar verbos Ej: nütxam a  nütxamkan',True,3),
             ],
 
             [Xoy('sI9', 'ni{0,1}e', False,1,False, 'tener, tamién sirve como el "presente o el estar" para verbos que afectan otras personas/cosas',True,4),
@@ -3323,12 +3323,12 @@ slotsIneke=[
              Xoy('sI21', 'le', False,1,False, 'estar',True,8),
             ],
 
-            [Xoy('sI22', 'falvñma', False,1,False, '<*metuno*>',True,9),
-             Xoy('sI23', 'falel', False,1,False, '<*metuno*>',True,9),
-             Xoy('sI24', 'fal', False,1,False, '<*metuno*>',True,9),
+            [Xoy('sI22', 'falvñma', False,1,False, 'encargo o deber en hablando de un objeto de alguien',True,9),
+             Xoy('sI23', 'falel', False,1,False, 'se considera en un deber peroen beneficio de alguien*',True,9),
+             Xoy('sI24', 'fal', False,1,False, 'deber de hacer algo| encargar | simular ',True,9),
              Xoy('sI25', 'v{0,1}ñma', False,1,False, 'afectar algo de alguien/algo / "quita"/ que te "caerle algo"',True,9),
              Xoy('sI26', 'v{0,1}ñmu', False,1,False, 'hacer aglo en beneficio propio',True,9),
-             Xoy('sI27', 'el', False,1,False, '<*metuno*>',True,9),
+             Xoy('sI27', 'el', False,1,False, 'agrega una persona al verbo "en su beneficio"',True,9),
             ],
 
             [
@@ -3371,20 +3371,20 @@ slotsIneke=[
             ],
 
             [Xoy('sI54', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc)',True,14),
-             Xoy('sI55', 'ka', False,1,False, 'acción que se repite ointensa, para verbos de algo Ej: nütxam -> nütxamkan',True,14),
+             Xoy('sI8', 'ka', False,1,False, 'acción que se repite o intensa, sirve para  generar verbos  Ej: nütxam a  nütxamkan',True,14),
             ],
 
             [Xoy('sI56', 'ke', False,1,False, 'habitual',True,15),
-             Xoy('sI56', 'k', False,1,False, 'habitual',True,15),
-             Xoy('sI57', 'pe', False,1,False, '"pasado no tan pasado," habia, hace poco ',True,15),
-             Xoy('sI58', 'p', False,1,False, '"pasado no tan pasado," habia, hace poco ',True,15),
+             Xoy('sI56', 'k(?=[iy])', False,1,False, 'habitual',True,15),
+             Xoy('sI57', 'pe', False,1,False, '"pasado no tan pasado," habia, hace poco, está',True,15),
+             Xoy('sI58', 'p(?=[iy])', False,1,False, '"pasado no tan pasado," habia, hace poco, está',True,15),
              Xoy('sI59', 'wye', False,1,False, 'indica que algo ya se hizo',True,15),
-             Xoy('sI60', 'petu', False,1,False, '<*metuno*>',True,15),
+             Xoy('sI60', 'petu', False,1,False, '"pasado no tan pasado," habia, hace poco, está (indicando un cambio)',True,15),
              Xoy('sI61', 'ketu', False,1,False, 'habitual "nuevo hábito"',True,15),
             ],
 
-            [Xoy('sI62', 'rk', False,1,False, 'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
-             Xoy('sI63', 'ik', False,1,False,  'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
+            [Xoy('sI62', 'rk(?=[iy])', False,1,False, 'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
+             Xoy('sI63', 'ik(?=[iy])', False,1,False,  'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
              Xoy('sI64', 'v{0,1}rke', False,1,False,  'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
              Xoy('sI65', 'ike', False,1,False,  'para hablar con sorpresa del asunto, o como diciendo "dicen que"(porque no es testigo directo o lo sabe 100%)',True,16),
             ],
@@ -3397,7 +3397,7 @@ slotsIneke=[
 
             [Xoy('sI70', 'y{0,1}a', False,1,False, 'futuro',True,18),
              Xoy('sI71', 'fu', False,1,False, 'algo que ya no corre ',True,18),
-             Xoy('sI72', 'f', False,1,False, 'algo que ya no corre ( FU pero seguido de E se convierte en FE )',True,18),
+             Xoy('sI72', 'f(?=[e])', False,1,False, 'algo que ya no corre ( FU pero seguido de E se convierte en FE )',True,18),
              Xoy('sI73', 'fi', False,1,False, 'indica un objeto al que se le hace la acción (Lo, La, Le)',True,18),
 	     Xoy('sI79', 'kifil', False,1,False,'negación en modo "órdenes" (imperativo) con el FI incluido',True,18),
              #Xoy('sI74', 'fil', False,1,False, '<*metuno*>',True,18),
