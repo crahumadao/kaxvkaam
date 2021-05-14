@@ -63,7 +63,7 @@ class Koyam:  # "Roble" // Tree
                             tachirakinid.append(xoy.id)
             if self.folil_amci and self.rakin_row == 0:
                 for xoy in sustantivosAdjetivos:  # Se buscan coincidencias con cada expresion regular de la lista de verbos
-                    if not  xoy.cemkeci == 1010 or (cemkeci==1010 and self.folil_amci):     
+                    if not  xoy.cemkeci == 1010 or (xoy.cemkeci==1010 and self.folil_amci):     
                         if xoy not in pre_xoy or not xoy.kineupa :
                             rr = len(self.kom_row)
                             self.rowgetui(xoy,True,pre_xoy)
