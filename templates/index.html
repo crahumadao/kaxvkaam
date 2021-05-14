@@ -46,13 +46,15 @@ textarea {
 
     {% for hemvla in pegelam_hemvl['puhemvl'] %}
 
-    <h4><p><b>{{hemvla['vy']}}</b></p></h4>
+    <h3><p><b>{{hemvla['vy']}}</b></p></h3>
+    {% if hemvla['xipai'] == True %}
+
     <h5><p>Creo que  está escrito en {{hemvla['wirintukun']}}  |  Wirintukugelu {{hemvla['wirintukun']}} mu txokifiñ </p></h5>
-            
+
 			
         {% for hemvl in hemvla['hemvlkawe'] %}
         <details>
-            <summary style="font-size: 25px">{{hemvl[0]}}</summary>
+            <summary style="font-size: 20px">{{hemvl[0]}}</summary>
                 <table class="wiriam" style="width:100%">
                     <tr class="wiriam">
                         {% for xoyhemvl in hemvl[3] %}
@@ -72,6 +74,10 @@ textarea {
                 </details>
         </details>
 		{% endfor %}
+        {% else %}
+            Esta palabra no la encontré | Tüfachi nhemül pelafiñ
+        {% endif %}
+        <br>
 		{% endfor %}
 	{% else %}
 	{% endif %}
