@@ -27,75 +27,90 @@ wirintukunVy = {
                 'uv2' : ('Unificado + Tr -> Tx', lambda w:re.sub('tr','tx',reglas21.rulpawe(w)))
 }
 
-def pepikaam_hemvl(hemvl, mvlica):
-    hemvl.lower()
-    wirintukun= chuchiWirintukun(hemvl)
-    xipaalu = dict()
+def pepikaam_hemvl(hemvla, mvlica):
+    xipaalu = dict()    
+    hemvla=[hemvl.strip().lower() for hemvl in hemvla.split()]
+    xipaalu['puhemvl'] = []
+    for hemvl in hemvla:
+        prexipaalu = dict()
+        wirintukun= chuchiWirintukun(hemvl)
 
-    Nm=0
-    koyam=None
-    wirina=()
-    for wirin in wirintukun:
-        kkoyam = Koyam(wirin[1].lower())
-        kkoyam.zewmakoyamvn()
-        if Nm<len(kkoyam.kom_row):
-            Nm=len(kkoyam.kom_row)
-            koyam = kkoyam
-            wirina = wirin
-    if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:
-        xipaalu['vy'] = hemvl
-        xipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
-#        koyam = Koyam(hemvl.lower())
-#        koyam.zewmakoyamvn()
-        rr = len(koyam.kom_row)
-        while True:
-            koyam.kaxvrowvn()
-            if rr == len(koyam.kom_row):
-                break
-            else:
-                rr = len(koyam.kom_row)
 
-        hemvlkawe = koyam.wirintuku_hemvl2()
-        hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
-        hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
-        regexkawe = koyam.wirintuku_regex()
-        wzkawe = koyam.wirintuku_wz()
-        wzkawe = [h.split('-')[1:] for h in wzkawe]
-        aux = []
-        aux2 = []
-        for item in regexkawe:
-            if item != '^':
-                aux2.append(item)
+        Nm=0
+        koyam=None
+        wirina=()
+        for wirin in wirintukun:
+            kkoyam = Koyam(wirin[1].lower())
+            kkoyam.zewmakoyamvn()
+            if Nm<len(kkoyam.kom_row):
+                Nm=len(kkoyam.kom_row)
+                koyam = kkoyam
+                wirina = wirin
+        if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:
+            prexipaalu['vy'] = hemvl
+            prexipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
+    #        koyam = Koyam(hemvl.lower())
+    #        koyam.zewmakoyamvn()
+            rr = len(koyam.kom_row)
+            while True:
+                koyam.kaxvrowvn()
+                if rr == len(koyam.kom_row):
+                    break
+                else:
+                    rr = len(koyam.kom_row)
+
+            hemvlkawe = koyam.wirintuku_hemvl2()
+            hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
+            hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
+            regexkawe = koyam.wirintuku_regex()
+            wzkawe = koyam.wirintuku_wz()
+            wzkawe = [h.split('-')[1:] for h in wzkawe]
+            aux = []
+            aux2 = []
+            for item in regexkawe:
+                if item != '^':
+                    aux2.append(item)
+                else:
+                    aux.append(aux2)
+                    aux2 = []
+            aux.append(aux2)
+            regexkawe = aux
+            regexkawe.pop(0)
+            del aux
+            del aux2
+            # hemvlKoyam =koyam.wirintukukoyam()
+            # hemvlKoyam = re.sub(r'\t(?=[a-zA-Z])','|__',hemvlKoyam)
+            # hemvlKoyam = re.sub(r'\t','    ',hemvlKoyam)
+            xapvmal = []
+            prexipaalu['eypial'] = 1
+            if rr==0:
+                prexipaalu['xipai'] = False
             else:
-                aux.append(aux2)
-                aux2 = []
-        aux.append(aux2)
-        regexkawe = aux
-        regexkawe.pop(0)
-        del aux
-        del aux2
-        # hemvlKoyam =koyam.wirintukukoyam()
-        # hemvlKoyam = re.sub(r'\t(?=[a-zA-Z])','|__',hemvlKoyam)
-        # hemvlKoyam = re.sub(r'\t','    ',hemvlKoyam)
-        xapvmal = []
-        xipaalu['eypial'] = 'Femgechi wüzalkafiñ'
-        xipaalu['decir'] = 'Así lo separé'
-        if rr==0:
-            xipaalu['xipai'] = False
+                prexipaalu['xipai'] = True
+            if len(hemvlkawe) > 0:
+                for i in range(len(hemvlkawe)):
+                    xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i],hemvlkawew[i]))
+                prexipaalu['hemvlkawe'] = xapvmal
+
         else:
-            xipaalu['xipai'] = True
-        if len(hemvlkawe) > 0:
-            for i in range(len(hemvlkawe)):
-                xapvmal.append((hemvlkawe[i], regexkawe[i],wzkawe[i],hemvlkawew[i]))
-            xipaalu['hemvlkawe'] = xapvmal
+            prexipaalu = dict()
+            prexipaalu['vy'] = hemvl
+            prexipaalu['eypial'] = 0
+            prexipaalu['xipai'] = False
 
-
-    else:
-        xipaalu = dict()
-        xipaalu['vy'] = hemvl
-        xipaalu['eypial'] = 'Pelan tami nhemül, ka kiñe rupa tukulfe'
-        xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
-        xipaalu['xipai'] = False
+        xipaalu['puhemvl'].append(prexipaalu)
+    xipaalu['eypial']='Pelan tami nhemül, ka kiñe rupa tukulfe'
+    xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
+    xipaalu['xipai'] = False
+    for hem in xipaalu['puhemvl']:
+        if hem['eypial'] == 1:
+            xipaalu['eypial']='Femgechi wüzalkafiñ'
+            xipaalu['decir'] = 'Así lo separé'
+            break
+    for hem in xipaalu['puhemvl']:
+        if hem['xipai']:
+            xipaalu['xipai']=True
+            break
     return xipaalu
 
 

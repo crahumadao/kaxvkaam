@@ -43,11 +43,14 @@ textarea {
 
 	<p> {{pegelam_hemvl['decir']}} | {{pegelam_hemvl['eypial']}} </p> 
 	{% if mvli == True %}
-    <h4><p><b>{{pegelam_hemvl['vy']}}</b></p></h4>
-    <h5><p>Creo que  está escrito en {{pegelam_hemvl['wirintukun']}}  |  Wirintukugelu {{pegelam_hemvl['wirintukun']}} mu txokifiñ </p></h5>
+
+    {% for hemvla in pegelam_hemvl['puhemvl'] %}
+
+    <h4><p><b>{{hemvla['vy']}}</b></p></h4>
+    <h5><p>Creo que  está escrito en {{hemvla['wirintukun']}}  |  Wirintukugelu {{hemvla['wirintukun']}} mu txokifiñ </p></h5>
             
 			
-        {% for hemvl in pegelam_hemvl['hemvlkawe'] %}
+        {% for hemvl in hemvla['hemvlkawe'] %}
         <details>
             <summary style="font-size: 25px">{{hemvl[0]}}</summary>
                 <table class="wiriam" style="width:100%">
@@ -68,6 +71,7 @@ textarea {
                     <p>{{hemvl[1]}}<p>
                 </details>
         </details>
+		{% endfor %}
 		{% endfor %}
 	{% else %}
 	{% endif %}
