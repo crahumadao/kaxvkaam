@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, render_template, request, red
 from kvzawpeyvm.wvzalkawe.koyam import Koyam
 from kvzawpeyvm.rulpawirintukuwe.KimamWirintukun import chuchiWirintukun
 from kvzawpeyvm.rulpawirintukuwe.Reglas import reglas12, reglas13, reglas21, reglas23, reglas31, reglas32
+from kvzawpeyvm.wvzalkawe.xoy import Xoy
 import time
 import datetime
 import webbrowser
@@ -26,6 +27,77 @@ wirintukunVy = {
                 'uv1' : ('Unificado + D -> Z',   lambda w:re.sub('d','z',reglas21.rulpawe(w))),
                 'uv2' : ('Unificado + Tr -> Tx', lambda w:re.sub('tr','tx',reglas21.rulpawe(w)))
 }
+# -> PARA TXOKIN
+def kintuxokin(koyam,n=0,a=False):
+
+    if koyam.xoy.id == "sI70":
+        # Este nivel es Futuro        
+        for row in koyam.kom_row:
+            kr = kintuxokin(row,n+1,a=True)
+            if kr[1] and kr[2]==1:
+                wk=Koyam(row.hemvl, rakin_row=row.rakin_row, xoys='afu', r_xoy=row.r_xoy, wecun_amci=False, folil_amci=False, chumte=row.chumte,
+                 tvfacihemvl=('', ''), chaw=koyam, xoy=Xoy('sI71*', 'afu', False,1,False, 'hipotético',True,18))
+                wk.kom_row=kr[0]
+                #koyam.kom_row.pop(koyam.kom_row.index(row))
+                koyam.setkomrow([wk])
+                koyam = wk
+
+            if kr[1] and kr[2]==2:
+                wk=Koyam(row.hemvl, rakin_row=row.rakin_row, xoys='af', r_xoy=row.r_xoy, wecun_amci=False, folil_amci=False, chumte=row.chumte,
+                 tvfacihemvl=('', ''), chaw=koyam, xoy=Xoy('sI72*', 'af', False,1,False, 'hipotético',True,18))
+                wk.kom_row=kr[0]
+                #koyam.kom_row.pop(koyam.kom_row.index(row))
+                #koyam.kom_row.append(wk)
+                koyam.setkomrow([wk])
+                koyam = wk
+        return koyam,False,5
+ 
+    
+
+    
+    if koyam.xoy.id == "sI71" and a:
+        print('FU')
+        # Este nivel es Fu
+        return koyam.kom_row,True,1
+
+    if koyam.xoy.id == "sI72" and a:
+        print('FU')
+        # Este nivel es F de Fufor row in koyam.kom_row:
+        return koyam.kom_row,True,2
+
+    for row in koyam.kom_row:
+        kr =kintuxokin(row,n+1)
+        if kr[2]==5:
+
+            print(f'''        
+        {kr[0].hemvl}\t|| {koyam.hemvl} => hemvl  # "hemvl" tati mvlewelu / "Palabra"  lo que queda // Word what lasts
+        {kr[0].tvfacihemvl}\t|| {koyam.tvfacihemvl} => tvfacihemvl
+        {kr[0].kom_row}\t|| {koyam.kom_row} => []  # "todas las ramas" // all branches
+        {kr[0].wecun_amci}\t|| {koyam.wecun_amci} => wecun_amci  # "final?" // end?
+        {kr[0].folil_amci}\t|| {koyam.folil_amci} => folil_amci  # "raiz?" // root?
+        {kr[0].rakin_row}\t|| {koyam.rakin_row} => rakin_row  # "cuenta rama" Nivel // "count branches" Level
+        {kr[0].xoys}\t|| {koyam.xoys} => xoys  # "parte" sufijo // "part" suffix
+        {kr[0].xoy}\t|| {koyam.xoy} => xoy
+        {kr[0].r_xoy}\t|| {koyam.r_xoy} => r_xoy  # rakin xoy kvme azkvunuam tati txoy zugun // "cuenta parte" sufijo para ordenarlos bien //
+        {kr[0].chumte}\t|| {koyam.chumte} => chumte  # chumten xoy /número de sufijo actual
+        {kr[0].chaw}\t|| {koyam.chaw} => chaw
+        ''')
+            
+         
+            print(1)
+            koyam.setkomrow([kr[0]])
+            print(2)
+            return koyam,None,None
+            
+
+        else:
+            print(3-4)
+            koyam.kom_row.pop(koyam.kom_row.index(row))
+            koyam.kom_row.append(row)
+    return koyam,None,None
+#    PARA TXOKIN
+    
+
 
 def pepikaam_hemvl(hemvla, mvlica):
     xipaalu = dict()    
@@ -34,8 +106,6 @@ def pepikaam_hemvl(hemvla, mvlica):
     for hemvl in hemvla:
         prexipaalu = dict()
         wirintukun= chuchiWirintukun(hemvl)
-
-
         Nm=0
         koyam=None
         wirina=()
@@ -46,11 +116,10 @@ def pepikaam_hemvl(hemvla, mvlica):
                 Nm=len(kkoyam.kom_row)
                 koyam = kkoyam
                 wirina = wirin
+        
         if mvlica and len(wirintukun)>0 and type(koyam)!= type(None) and Nm>0:
             prexipaalu['vy'] = hemvl
             prexipaalu['wirintukun'] = wirintukunVy[wirina[0]][0]
-    #        koyam = Koyam(hemvl.lower())
-    #        koyam.zewmakoyamvn()
             rr = len(koyam.kom_row)
             while True:
                 koyam.kaxvrowvn()
@@ -59,6 +128,11 @@ def pepikaam_hemvl(hemvla, mvlica):
                 else:
                     rr = len(koyam.kom_row)
 
+            # Txokiñ
+            koyam = kintuxokin(koyam,0)[0]
+            # Txokiñ    
+            
+            
             hemvlkawe = koyam.wirintuku_hemvl2()
             hemvlkawe =  [wirintukunVy[wirina[0]][1](h) for h in hemvlkawe]
             hemvlkawew = [h.split('-')[1:] for h in hemvlkawe]
@@ -78,9 +152,6 @@ def pepikaam_hemvl(hemvla, mvlica):
             regexkawe.pop(0)
             del aux
             del aux2
-            # hemvlKoyam =koyam.wirintukukoyam()
-            # hemvlKoyam = re.sub(r'\t(?=[a-zA-Z])','|__',hemvlKoyam)
-            # hemvlKoyam = re.sub(r'\t','    ',hemvlKoyam)
             xapvmal = []
             prexipaalu['eypial'] = 1
             if rr==0:
@@ -99,26 +170,18 @@ def pepikaam_hemvl(hemvla, mvlica):
             prexipaalu['xipai'] = False
 
         xipaalu['puhemvl'].append(prexipaalu)
-    print(1)
     xipaalu['eypial']='Pelan tami nhemül, ka kiñe rupa tukulfe'
     xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
     xipaalu['xipai'] = False
-    print(2)
     for hem in xipaalu['puhemvl']:
-        print(3)
         if hem['eypial'] == 1:
-            print(4)
             xipaalu['eypial']='Femgechi wüzalkafiñ'
             xipaalu['decir'] = 'Así lo separé'
             break
-    print(5)
     for hem in xipaalu['puhemvl']:
-        print(6)
         if hem['xipai']:
-            print(7)
             xipaalu['xipai']=True
             break
-    print(xipaalu['xipai'])
     return xipaalu
 
 

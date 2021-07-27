@@ -41,7 +41,9 @@ class Koyam:  # "Roble" // Tree
 #    def __del__(self):
 #        print(f'Entugei ti {self.xoys} aliwen mu')
         
-
+    def setkomrow(self,R):
+        self.kom_row=R
+        
     def zewmakoyamvn(self,pre_xoy=[],folil = True):  # zewmaam tati koyam
         tachirakinid=[]
         pre_xoy =pre_xoy+ [self.xoy]

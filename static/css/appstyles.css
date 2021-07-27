@@ -532,7 +532,6 @@ background-color: violet;
   }
 
 .puwz div:hover {
-    z-index: 3000;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
 .puwz .xoy0{

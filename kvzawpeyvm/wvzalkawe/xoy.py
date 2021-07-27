@@ -164,115 +164,6 @@ class Xoy:
 
 
 
-'''
-towrite = 'verbo_regex=[\n'
-
-cijka = open('zewmayal_xoy.py','w')
-ramtuam = ['idx','regex','wecun','cemkeci','inaafeyu_verbo','wigkazugun','kineupa','rakin' ]
-
-p = []
-for ramtun in ramtuam:
-    if ramtun == 'idx':
-        p.append('vI')
-    elif ramtun == 'cemkeci':
-        p.append(0)
-    elif ramtun == 'wigkazugun':
-        p.append('todavia no')
-    elif ramtun == 'wecun' or ramtun == 'inaafeyu_verbo' or ramtun == 'kineupa':
-        paux = input(f'VERBO -> {ramtun}:\t')
-        if paux == 1:
-            p.append(True)
-        else:
-            p.append(False)
-    elif ramtun == 'rakin':
-        p.append('0')
-    elif ramtun == 'regex':
-        p.append('a')
-    else:
-        paux = input(f'VERBO -> {ramtun}:\t')
-        p.append(paux)
-vidx = 0
-for regex in verbo_regex:
-    towrite = towrite + f"Xoy('{p[0]+str(vidx)}, '{regex}', {p[2]},0,True, '<*metuno*>',{p[6]},{p[7]}),\n"
-    vidx+=1
-
-towrite= towrite+"]\nslotsIneke=[\n"
-Midx = 0
-for regex_set in slotsIneke:
-    towrite = towrite + '['
-    for regex in regex_set:
-
-        p = []
-        for ramtun in ramtuam:
-            if ramtun == 'idx':
-                p.append('sI')
-            elif ramtun == 'cemkeci':
-                p.append(1)
-            elif ramtun == 'wigkazugun':
-                p.append('todavia no')
-            elif ramtun == 'wecun' or ramtun == 'inaafeyu_verbo':
-                paux = input(f'{regex} -> {ramtun}:\t')
-                if paux == 1:
-                    p.append(True)
-                else:
-                    p.append(False)
-            elif ramtun == 'kineupa':
-                p.append('kineupa')
-            elif ramtun == 'rakin':
-                p.append('0')
-            elif ramtun == 'regex':
-                    p.append('a')
-            else:
-                paux = input(f'{regex} -> {ramtun}:\t')
-                p.append(paux)
-        towrite = towrite+ f"Xoy('{p[0]+str(Midx)}, '{regex}', {p[2]},1,{p[4]}, '<*metuno*>',True,{Midx+1}),\n"
-        Midx +=1
-    towrite = towrite + '],\n'
-towrite = towrite + ']\n'
-
-
-
-
-towrite= towrite+"desinenciasInd=[\n"
-vidx = 0
-for regex in desinenciasInd:
-    towrite = towrite+ f"Xoy('{'dI'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]\ntransicionInd=[\n"
-for regex in transicionInd:
-    towrite = towrite+ f"Xoy('{'tI'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]\ndesinenciasCond=[\n"
-for regex in desinenciasCond:
-    towrite = towrite+ f"Xoy('{'dC'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]\ntransicionCond=[\n"
-for regex in transicionCond:
-    towrite = towrite+ f"Xoy('{'tI'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]desinenciasImpe=[\n"
-for regex in desinenciasImpe:
-    towrite = towrite+ f"Xoy('{'di'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]\ntransicionImpe=[\n"
-for regex in transicionImpe:
-    towrite = towrite+ f"Xoy('{'ti'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-vidx = 0
-towrite= towrite+"]otrasDesinencias=[\n"
-for regex in otrasDesinencias:
-    towrite = towrite+ f"Xoy('{'dO'+str(vidx)}, '{regex}', True,2,False, '<*metuno*>',True,100),\n"
-    vidx +=1
-towrite= towrite+']'
-
-cijka.write(towrite)
-cijka.close()
-'''
 
 
 verbo_regex=[Xoy('vI0','yvwvz', False,0,True,' vi enrollar',False,0),
@@ -779,7 +670,7 @@ Xoy('vI500','xvlkentu', False,0,True,' vtr descuerar, desollar, despellejar ║'
 Xoy('vI501','xvlke', False,0,True,' s cuero, piel, pellejo ║, vtr,descuerar, desollar, despellejar ║,',False,0),
 Xoy('vI502','xvla', False,0,True,' vi partirse, romperse, henderse, rajarse ║, vtr romper,,quebrar, hender, abrir, rajar, partir ║',False,0),
 Xoy('vI503','xvkvf', False,0,True,' s calambre ║, vi encogerse, contraerse; acalambrarse',False,0),
-Xoy('vI504','xvkow', False,0,True,' vi =xvko',False,0),
+Xoy('vI504','xvkow', False,0,True,' vi encogerse, contraerse;   acalambrarse',False,0),
 Xoy('vI505','xvko', False,0,True,' s ovillo; laringe ║, vi encogerse, contraerse;   acalambrarse ║',False,0),
 Xoy('vI506','xvkerv', False,0,True,' vtr retorcer los ojos de,rabia',False,0),
 Xoy('vI507','xvqvyxvqvyge', False,0,True,' vi estar rompiéndose, estar abriéndose',False,0),
@@ -1407,7 +1298,7 @@ Xoy('vI1128','pawkv', False,0,True,' vi explotar, estallar, reventar ║',False,
 Xoy('vI1129','papeltu', False,0,True,' vi & vtr leer; estudiar',False,0),
 Xoy('vI1130','papel', False,0,True,' s [Cast.] papel ║, vi fabricar papel ║',False,0),
 Xoy('vI1131','pañvtu', False,0,True,' vi tomar sol a la sombra, tomar resolana',False,0),
-Xoy('vI1132','panvkvnu', False,0,True,'  vtr  =panv ║',False,0),
+Xoy('vI1132','panvkvnu', False,0,True,'   vtr cargar al hombro o en brazos ║',False,0),
 Xoy('vI1133','panv', False,0,True,' s brazada (de) ║, vtr cargar al hombro o en brazos ║',False,0),
 Xoy('vI1134','panutu', False,0,True,' vi comer harina tostada (en polvo)',False,0),
 Xoy('vI1135','panko', False,0,True,' vtr abrazar',False,0),
@@ -3345,7 +3236,7 @@ slotsIneke=[
              Xoy('sI33', 'ge', False,1,False, 'la acción es sobre la persona del verbo "me dijeron" "te escucharon" ',True,11),
              Xoy('sI33', 'g(?=[iy][iy]{0,1})', False,1,False, 'la acción es sobre la persona del verbo "me dijeron" "te escucharon" ',True,11),
              Xoy('sI34', 'u{0,1}w', False,1,False, 'hacerse algo a si mismo, transformarse en algo',True,11),
-             Xoy('sI35', 'm[uo]', False,1,False, 'acciones de tu o uds a nosotros o yo [el pronombre dice a quien lo hacen o pos]',True,11),
+             Xoy('sI35', 'm[uo]', False,1,False, 'acciones de tu o uds a nosotros o yo [la terminación indica sobre quien es la acción]',True,11),
             ],
 
             [Xoy('sI36', 'femuw', False,1,False, '<*metuno*>',True,12),
@@ -3372,7 +3263,7 @@ slotsIneke=[
              Xoy('sI53', 'me', False,1,False, 'ir a hacer la acción',True,13),
             ],
 
-            [Xoy('sI54', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc)',True,14),
+            [Xoy('sI54', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc), puede indicar cambios',True,14),
              Xoy('sI8', 'ka', False,1,False, 'acción que se repite o intensa, sirve para  generar verbos  Ej: nütxam a  nütxamkan',True,14),
             ],
 
@@ -3401,7 +3292,7 @@ slotsIneke=[
              Xoy('sI71', 'fu', False,1,False, 'algo que ya no corre ',True,18),
              Xoy('sI72', 'f(?=[e])', False,1,False, 'algo que ya no corre ( FU pero seguido de E se convierte en FE )',True,18),
              Xoy('sI73', 'fi', False,1,False, 'indica un objeto al que se le hace la acción (Lo, La, Le)[si es terminación indica que lo hace una 3ra persona( el/ella "lo"))]',True,18),
-	     Xoy('sI79', 'kifil', False,1,False,'negación en modo "órdenes" (imperativo) con el FI incluido',True,18),
+	         Xoy('sI79', 'kifil', False,1,False,'negación en modo "órdenes" (imperativo) con el FI incluido',True,18),
              #Xoy('sI74', 'fil', False,1,False, '<*metuno*>',True,18),
             ],
 ]
@@ -3432,7 +3323,7 @@ Xoy('tI8', 'eymu$', True,2,False, 'a ustedes 2 "les"',True,100),
 Xoy('tI9', 'eymi$', True,2,False, 'a ti "te"',True,100),
 Xoy('tI10', 'fiñ$', True,2,False, 'de Yo a el/ella/ellxs "les"',True,100),
 Xoy('tI11', 'eyu$', True,2,False, 'yo a ti "te" ',True,100),
-Xoy('tI12', 'en$', True,2,False, 'tu a mi "me"',True,100),
+Xoy('tI12', 'en$', True,2,False, 'tu a mi "me"[también se podría entender como una orden]',True,100),
 ]
 desinenciasCond=[
 Xoy('dC0', 'li[y\-]{0,1}iñ$', True,2,False, 'Si/cuando(futuro) nosotros mas de 2 ...',True,100),
@@ -3472,16 +3363,16 @@ Xoy('di6', 'ge$', True,2,False, 'tu hazlo ',True,100),
 Xoy('di7', 'ci$', True,2,False, 'que yo haga',True,100),
 ]
 transicionImpe=[
-Xoy('ti0', 'ey{0,1}iñmew$|ey{0,1}iñmeu$|ey{0,1}iñmu$|ey{0,1}iñmo$', True,2,False, 'de el/ella/ellxs a nosotros "orden"',True,100),
-Xoy('ti1', 'eymvnmew$|eymvnmeu$|eymvnmu$|eymvnmo$', True,2,False, 'de el/ella/ellxs a ustedes "orden"',True,100),
-Xoy('ti2', 'eymumew$|eymumeu$|eymumu$|eymumo]$', True,2,False, 'de  el/ella/ellxs a ustedes 2 "orden"',True,100),
+#Xoy('ti0', 'ey{0,1}iñmew$|ey{0,1}iñmeu$|ey{0,1}iñmu$|ey{0,1}iñmo$', True,2,False, 'de el/ella/ellxs a nosotros "orden"',True,100),
+Xoy('ti1', 'emvnmew$|emvnmeu$|emvnmu$|emvnmo$', True,2,False, 'de el/ella/ellxs a ustedes "orden"',True,100),
+Xoy('ti2', 'emumew$|emumeu$|emumu$|emumo]$', True,2,False, 'de  el/ella/ellxs a ustedes 2 "orden"',True,100),
 Xoy('ti3', 'ecimecimew$|ecimeu$|ecimu$|ecimo$', True,2,False, 'de el/ella/ellxs a yo "orden"',True,100),
-Xoy('ti4', 'eyumew$|eyumeu$|eyumu$|eyumo]$', True,2,False, 'de el/ella/ellxs a  nosotros2"orden"',True,100),
-Xoy('ti5', 'eymew$|eymeu$|eymu$|eymo]$', True,2,False, 'de el/ella/ellxs a tú "orden"',True,100),
-Xoy('ti6', 'eyew$|eyeu$|eyu$|eyo$', True,2,False, 'de el/ella/ellxs a el/ella/ellxs "orden"',True,100),
-Xoy('ti7', 'w[*]ai{0,1}y{0,1}iñ$', True,2,False, 'de yo/nosotros a ustedes/tú  "orden"',True,100),
+#Xoy('ti4', 'eyumew$|eyumeu$|eyumu$|eyumo]$', True,2,False, 'de el/ella/ellxs a  nosotros2"orden"',True,100),
+#Xoy('ti5', 'eymew$|eymeu$|eymu$|eymo]$', True,2,False, 'de el/ella/ellxs a tú "orden"',True,100),
+#Xoy('ti6', 'eyew$|eyeu$|eyu$|eyo$', True,2,False, 'de el/ella/ellxs a el/ella/ellxs "orden"',True,100),
+#Xoy('ti7', 'w[*]ai{0,1}y{0,1}iñ$', True,2,False, 'de yo/nosotros a ustedes/tú  "orden"',True,100),
 Xoy('ti8', 'fici$', True,2,False, 'de yo a el/ella/ellxs "orden"',True,100),
-Xoy('ti9', 'en$', True,2,False, 'de tú a yo "orden"',True,100),
+#Xoy('ti9', 'en$', True,2,False, 'de tú a yo "orden"',True,100),
 ]
 otrasDesinencias=[
 Xoy('dO0', 'etew|etu|eto$', True,2,False, 'se refiere a lo que hicieron o quien lo hizo (3ras personas a cualquiera; se usa con posesivos para ser más claro, con futuro se puede hablar de propósito) ',True,100),
@@ -3505,23 +3396,24 @@ Xoy('dO17', 'el$', True,2,False, 'expresa acciones o resultados de esta en el pa
 Xoy('dO18', 'lu$', True,2,False, 'se puede referir a una persona o puede decir la característica de esta',True,100),
 Xoy('dO19', 'am$', True,2,False, 'sirve para expresar propósito',True,100),
 ]
-sustantivosAdjetivos =[Xoy('SA0', 'yvw', False,0,True, ' =yu',False,0),
+sustantivosAdjetivos =[Xoy('SA0', 'yvw', False,0,True, ' s nariz ',False,0),
 Xoy('SA1', 'yvfvm', False,0,True, ' s [Went.] animal menor',False,0),
 Xoy('SA2', 'yvfvzentu', False,0,True, ' vtr,quitar raspando',False,0),
 Xoy('SA3', 'yvze', False,0,True, ' s grasa',False,0),
-Xoy('SA4', 'yv', False,0,True, ' =yu',False,0),
+Xoy('SA4', 'yv', False,0,True, 's nariz ',False,0),
 Xoy('SA5', 'yupi', False,0,True, ' s hombro,',False,0),
 Xoy('SA6', 'yupe', False,0,True, ' s [zool.] erizo (Loxechinus albus)',False,0),
-Xoy('SA7', 'yuge', False,0,True, ' =yug ║',False,0),
+Xoy('SA7', 'yuge', False,0,True, '  adj,afilado, filoso, puntiagudo  ║',False,0),
 Xoy('SA8', 'yug', False,0,True, ' adj,afilado, filoso, puntiagudo ║',False,0),
 Xoy('SA9', 'yukuko', False,0,True, ' s [ornit.] codorniz (Callipepla californica)',False,0),
 Xoy('SA10', 'yuku', False,0,True, ' s [Cast.] yugo',False,0),
 Xoy('SA11', 'yu', False,0,True, ' pron pos. 1ª pers. dual nuestro (de nosotros dos),, s nariz ║',False,0),
 Xoy('SA11', 'tayu', False,0,True, ' pron pos. 1ª pers. dual nuestro (de nosotros dos)',False,0),
 Xoy('SA12', 'yom', False,0,True, ' adv demasiado, excesivamente ║',False,0),
-Xoy('SA13', 'yoz', False,0,True, ' =zoy',False,0),
+Xoy('SA13', 'yoz', False,0,True, ' más ',False,0),
+Xoy('SA013', 'zoy', False,0,True, ' más ',False,0),
 Xoy('SA14', 'yocikay', False,0,True, ' exp gracias (cuando uno no quiere servirse más comida o bebida)',False,0),
-Xoy('SA15', 'yiwiñ', False,0,True, ' =iwiñ',False,0),
+Xoy('SA15', 'yiwiñ', False,0,True, ' s grasa (de], aceite (de], manteca (de) ║',False,0),
 Xoy('SA16', 'yewmen', False,0,True, ' adj suelto, ágil,,desenvuelto',False,0),
 Xoy('SA17', 'yewenten', False,0,True, ' adj vergonzoso (que se avergüenza con facilidad) ║,',False,0),
 Xoy('SA18', 'yewen', False,0,True, ' s prometido/a y futuro suegro/a',False,0),
