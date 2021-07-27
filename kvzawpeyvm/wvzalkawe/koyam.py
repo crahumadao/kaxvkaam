@@ -17,7 +17,7 @@ class Koyam:  # "Roble" // Tree
         self.xoy = xoy
         self.r_xoy = r_xoy  # rakin xoy kvme azkvunuam tati txoy zugun // "cuenta parte" sufijo para ordenarlos bien //
         self.chumte = chumte  # chumten xoy /número de sufijo actual
-        self.chaw = chaw  # iñi tañi yaj
+        self.chaw = chaw  # iñi tañi yaj d/e quien es este hijo / padre
 
 
     def __repr__(self):

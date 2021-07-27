@@ -99,25 +99,33 @@ def pepikaam_hemvl(hemvla, mvlica):
             prexipaalu['xipai'] = False
 
         xipaalu['puhemvl'].append(prexipaalu)
+    print(1)
     xipaalu['eypial']='Pelan tami nhemül, ka kiñe rupa tukulfe'
     xipaalu['decir'] = 'No encontré tu palabra, ponla nuevamente'
     xipaalu['xipai'] = False
+    print(2)
     for hem in xipaalu['puhemvl']:
+        print(3)
         if hem['eypial'] == 1:
+            print(4)
             xipaalu['eypial']='Femgechi wüzalkafiñ'
             xipaalu['decir'] = 'Así lo separé'
             break
+    print(5)
     for hem in xipaalu['puhemvl']:
+        print(6)
         if hem['xipai']:
+            print(7)
             xipaalu['xipai']=True
             break
+    print(xipaalu['xipai'])
     return xipaalu
 
 
 @app.route('/', methods=['GET'])
 def konwe():
     mvli = False
-    pegelam_hemvl = {'vy': ''}
+    pegelam_hemvl = {'vy': '', 'wvne':True}
     return render_template('index.html', mvli=mvli, pegelam_hemvl=pegelam_hemvl)
 
 
@@ -137,13 +145,15 @@ def pegelwe():
         mvli = False
         hemvl = ''
         pegelam_hemvl = pepikaam_hemvl(hemvl, mvli)
+        
         mvli = pegelam_hemvl['xipai']
+    pegelam_hemvl['wvne']=False
     return render_template('index.html', mvli=mvli, pegelam_hemvl=pegelam_hemvl)
 
 
 @app.route('/kellual',methods=['POST','GET'])
 def werkvlal_msg():
-    flash('Recibimos tu mensjae, gracias por ayudarnos / Llowfiiñ tami werkvlfiel, mañumuwiyiñ tami kellumufiel ')
+    flash('Chaltu May!!')
     fewla = str(datetime.datetime.now())[:-7]
     basepath = os.path.abspath(".")
     eypi = url_for('static',filename='eypietew.txt')

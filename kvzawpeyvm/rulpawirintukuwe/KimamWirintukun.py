@@ -82,6 +82,9 @@ def chuchiWirintukun(txt):
     RAgey=RA1 and RA2
     AZgey=AZ1 and AZ2
     
+    if AZgey:
+        wirintukun.append(('a0',reglas32.rulpawe(txt)))
+        print('Azvmcefe')
     if UNgey:
         wirintukun.append(('u0',reglas12.rulpawe(txt)))
         print('Unificado',)  
@@ -89,9 +92,7 @@ def chuchiWirintukun(txt):
     if RAgey:
         wirintukun.append(('r0',txt))
         print('Ragileo')
-    if AZgey:
-        wirintukun.append(('a0',reglas32.rulpawe(txt)))
-        print('Azvmcefe')
+
     if not (UNgey or RAgey or AZgey):   
         print('Ninguno')
         

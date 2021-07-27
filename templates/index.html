@@ -1,259 +1,376 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-.wiriam {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
 
-textarea {
-        width: 500px;
-        height: 100px;}
-</style>
-	<meta charset="UTF-8">
-	<title> Nhemül Wüzalkawe </title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/appstyles.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhemül Wüzalkawe</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/appstyles.css') }}">
 </head>
 <script src="{{ url_for('static',filename='appscript.js') }}"> </script>
+
 <body>
 
-	<table style="width:100%">
-        <tr>
-            <td colspan="3">
-                <h3>Separador de Palabras</h3>
-                <p>Hola!<p>
-                <p> Aquí te dejo una herramienta para que te ayude a aprender más Mapuzugun, espero que con esto entiendas más este idioma (el mejor).</p>
-            </td>
-            <td colspan="3">
-                <h3> Nhemül Wüzalkawe</h3>
-                <p>Mari mari!<p>
-                <p>Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
-            </td>
-            
-        </tr>
-    </table>
-    <div style='text-align: center'>
-	<form method="post" action="/wvzalkafe">
-        <label for="hemvl" id="vhemvl"> Palabra / Nhemül</label>
-	<input type="text" id="hemvl" name="hemvl" placeholder="Aqui pon tu palabra /tüfa mu tukulfe tami nhemül">
-	<input type="submit" value="Separalo / Wüzalkafige">
-	</form>
-<hr>
 
-	<p> {{pegelam_hemvl['decir']}} | {{pegelam_hemvl['eypial']}} </p> 
-	{% if mvli == True %}
+    <div class="contenedor">
 
-    {% for hemvla in pegelam_hemvl['puhemvl'] %}
+        <div class="supcontenedor">
+            <div class=lko-cka>
+                <h3 id="lkocka"> Nhemül Wüzalkawe</h3>
+            </div>
+            <div class="acontenedor">
+                <div class="a1">
+                    <a href="#mapu" data-reload onclick="reloadPage()"> Mapuzugun</a>
+                </div>
+                <div class="a2">
+                    <a href="#wigka" data-reload onclick="reloadPage()"> Español</a>
+                </div>
 
-    <h3><p><b>{{hemvla['vy']}}</b></p></h3>
-    {% if hemvla['xipai'] == True %}
+            </div>
 
-    <h5><p>Creo que  está escrito en {{hemvla['wirintukun']}}  |  Wirintukugelu {{hemvla['wirintukun']}} mu txokifiñ </p></h5>
+        </div>
+        <div class="butcontenedor">
+            <div>
+                <p id="butkp" class="but activo">Küzawpeyüm</p>
+            </div>
+            <div>
+                <p id="butcp" class="but">Chumgechi püneafiel</p>
+            </div>
+            <div>
+                <p id="butgp" class="but">Gütxam püneafiel tüfa mu</p>
+            </div>
+        </div>
 
-			
-        {% for hemvl in hemvla['hemvlkawe'] %}
-        <details>
-            <summary style="font-size: 20px">{{hemvl[0]}}</summary>
-                <table class="wiriam" style="width:100%">
-                    <tr class="wiriam">
-                        {% for xoyhemvl in hemvl[3] %}
-                            <th class="wiriam">{{xoyhemvl}}</th>
+        <div class="subcontenedor">
+            <div class="tbloque activo">
+                <div class="card">
+                    <img class="img-card" src="static/img/img-cln.png" alt="wünhelfe">
+
+
+                    <div class="container-card2">
+                        <p id="cln">Ta mu elkünul-aeyu kiñe küzawpeyüm tami kelluaetew zoy kim mapuzugual, pewmagen mai
+                            tüfa mu zoy azümneaimi tüfachi zugun llemai (tati zoy kümelu).</p>
+                    </div>
+                    <div class="container-card1">
+                        <p id="lkocln">Mari mari!</p>
+                    </div>
+
+                </div>
+                <div class="form-hemvl">
+                    <form method="post" action="/wvzalkafe">
+                        <label for="hemvl" id="vhemvl" class="lab-hml">Nhemül</label>
+                        <input type="text" id="hemvl" name="hemvl" class="ph-hml"
+                            placeholder="Tüfa mu tukulfe tami nhemül">
+                        <input type="submit" class="submit1" id="btnhml" value="Wüzalkafige" class="submit">
+                    </form>
+                </div>
+
+
+                {% if mvli == True %}
+                <!--<div class="eypial">
+                    <p id="wvzalgeci"> {{pegelam_hemvl['eypial']}}</p>
+                </div>-->
+                {% if pegelam_hemvl['xipai']==True %}
+                {% for hemvla in pegelam_hemvl['puhemvl'] %}
+                <div class="eypial">
+                    <h3>
+                        <p class="tatihemvl"><b>{{hemvla['vy']}}</b></p>
+                    </h3>
+                    {% if hemvla['xipai'] == True %}
+
+                    <h5>
+                        <p class="wirintukun" id="wirintukun"> Wirintukugelu {{hemvla['wirintukun']}} mu txokifiñ </p>
+                    </h5>
+
+                    <p id="pelan" style="visibility: hidden;"></p>
+
+                </div>
+                {% for hemvl in hemvla['hemvlkawe'] %}
+                <div class="acordeonR">
+                    <div class="bloqueR">
+                        <div class="h4R">
+                            {{hemvl[0][1:]}}
+                        </div>
+                        <div class="contenidoR">
+                            <div class="puxoy">
+                                {% for xoyhemvl in hemvl[3] %}
+                                <div class="xoy{{hemvl[3].index(xoyhemvl)}}">{{xoyhemvl}}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="puwz">
+                                {% for xoyhemvl in hemvl[2] %}
+                                <div class="xoy{{hemvl[2].index(xoyhemvl)}}">{{xoyhemvl}}</div>
+                                {% endfor %}
+                            </div>
+                            <details>
+                                <summary class="regex"> Expresion regular (computación) </summary>
+                                <div class="purx">
+                                    {% for xoyhemvl in hemvl[1] %}
+                                    <div class="xoy{{hemvl[1].index(xoyhemvl)}}">{{xoyhemvl}}</div>
+                                    {% endfor %}
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {% endfor %}
+                {% else %}
+                <div class="eypial">
+                    <p id="pelan"> Tüfachi nhemül pelafiñ, ka kiñe tukulfe</p>
+                    <p id="wvzalgeci" style="visibility: hidden;"></p>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% elif pegelam_hemvl['wvne'] %}
+                <div class="eypial">
+                    <p id="pelan" style="visibility: hidden;"> </p>
+                    <p id="wvzalgeci" style="visibility: hidden;"></p>
+                </div>
+                {% else %}
+
+                <div class="eypial">
+                    <p id="pelan"> Tüfachi nhemül pelafiñ, ka kiñe tukulfe</p>
+                    <p id="wvzalgeci" style="visibility: hidden;"></p>
+                </div>
+                {% endif %}
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="eypial">
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
                         {% endfor %}
-                    </tr>
-                    <tr class="wiriam">
-                        {% for xoyhemvl in hemvl[2] %}
-                            <td class="wiriam">{{xoyhemvl}}</td>
-                        {% endfor %}                        
-                    </tr>
-                    
-                </table>
-                <details>            
-                    <summary>Expresion regular (Para computación)</p></summary>
-                    <p>{{hemvl[1]}}<p>
-                </details>
-        </details>
-		{% endfor %}
-        {% else %}
-            Esta palabra no la encontré | Tüfachi nhemül pelafiñ
-        {% endif %}
-        <br>
-		{% endfor %}
-	{% else %}
-	{% endif %}
-    </br>
-    <hr>
-    </br>
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class=flashes>pegelelafiel tati pu chuillkatufe
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endwith %}
 
-    <form method="post" action="/kellual" id="kellual">
-    <label for="kellun" id="vkellual"> Comentario / Tami chumgentufiel tati küzawpeyüm</label>
-    </br>
-    <textarea id="kellual" name="kellun" placeholder="Aquí escribe como podría ser mejor nuestra herramienta |             | tüfa mu wirintukufe chumgechi zoy kümeleafel taiñ küzawpeyüm"></textarea>
-    </br>
-	<input type="submit" value="Envíalo / Werkülfige">
-    <input type="hidden" id="kellual" name="fewlahemvl" value="{{pegelam_hemvl['vy']}}">
-	</form>
+                <div class="form-kellual">
+                    <form method="post" action="/kellual" id="kellual">
+                        <label class="lab-hml2" for="kellun" id="vkellual">Tami chumgentufiel tati küzawpeyüm</label>
 
-    <hr>
+                        <textarea id="kellual" name="kellun" class="ph-hml2"
+                            placeholder="Tüfa mu wirintukufe chumgechi zoy kümeleafel taiñ küzawpeyüm"></textarea>
 
-  
+                        <input type="submit" class="submit2" value="Werkülfige" id="btncgt">
+                        <input type="hidden" id="kellual" name="fewlahemvl" value="{{pegelam_hemvl['vy']}}">
+                    </form>
+                </div>
+            </div>
 
-    <h4> Ejemplos/Azümam </h4>
+            <div class="tbloque">
 
-               <p> Aquí hay algunas palabras de ejemplo para que entiendas como usar esta herramienta</p>
-               <p> Tüfa  mülei kiñeke nhemül tami azümafiel chumgechi  püneafiel tüfachi küzawpeyüm </p>
 
-            <p><b> Wazküy</b>, que significa "hirvió" se podría separar como:</p>
-            <details>
-            <summary style="font-size: 15px">-wazkü-y</summary>
-                <table class="wiriam" style="width:100%">
-                    <tr class="wiriam">
-                        
-                            <th class="wiriam">wazkü</th>
-                        
-                            <th class="wiriam">y</th>
-                        
-                    </tr>
-                    <tr class="wiriam">
-                        
-                            <td class="wiriam"> vi hervir ║</td>
-                        
-                            <td class="wiriam">El/Ella  </td>
-                                                
-                    </tr>
-                    
-                </table>
-                <details>            
-                    <summary>Expresion regular (Para computación)</p></summary>
-                    <p>[&#39;^wazkv&#39;, &#39;^[yi]$&#39;]<p>
-                </details>
-        </details>-
 
-        <b> Amuaiñ</b>, que significa "iremos" se podría separar como:
-        <details>
-            <summary style="font-size: 15px">-amu-a-iñ</summary>
-                <table class="wiriam" style="width:100%">
-                    <tr class="wiriam">
-                        
-                            <th class="wiriam">amu</th>
-                        
-                            <th class="wiriam">a</th>
-                        
-                            <th class="wiriam">iñ</th>
-                        
-                    </tr>
-                    <tr class="wiriam">
-                        
-                            <td class="wiriam"> vi irse, andar, continuar, avanzar ║</td>
-                        
-                            <td class="wiriam">futuro</td>
-                        
-                            <td class="wiriam">Nosotros (mas de 2 personas)</td>
-                                                
-                    </tr>
-                    
-                </table>
-                <details>            
-                    <summary>Expresion regular (Para computación)</p></summary>
-                    <p>[&#39;^amu&#39;, &#39;^y{0,1}a&#39;, &#39;^i{0,1}y{0,1}iñ$&#39;]<p>
-                </details>
-        </details>
-        <b> ayüwkülen</b>, que significa "estoy contento/feliz" se podría separar como:
-      <details>
-            <summary style="font-size: 15px">-ayüwküle-n</summary>
-                <table class="wiriam" style="width:100%">
-                    <tr class="wiriam">
-                        
-                            <th class="wiriam">ayüwküle</th>
-                        
-                            <th class="wiriam">n</th>
-                        
-                    </tr>
-                    <tr class="wiriam">
-                        
-                            <td class="wiriam"> vi estar alegre, estar contento ║</td>
-                        
-                            <td class="wiriam">Yo /o el verbo &#34;puro&#34;</td>
-                                                
-                    </tr>
-                    
-                </table>
-                <details>            
-                    <summary>Expresion regular (Para computación)</p></summary>
-                    <p>[&#39;^ayvwkvle&#39;, &#39;^v{0,1}n$&#39;]<p>
-                </details>
-        </details>
-		
-        <details>
-            <summary style="font-size: 15px">-ayüw-küle-n</summary>
-                <table class="wiriam" style="width:100%">
-                    <tr class="wiriam">
-                        
-                            <th class="wiriam">ayüw</th>
-                        
-                            <th class="wiriam">küle</th>
-                        
-                            <th class="wiriam">n</th>
-                        
-                    </tr>
-                    <tr class="wiriam">
-                        
-                            <td class="wiriam"> vi alegrarse, contentarse ║,</td>
-                        
-                            <td class="wiriam">estar</td>
-                        
-                            <td class="wiriam">Yo /o el verbo &#34;puro&#34;</td>
-                                                
-                    </tr>
-                    
-                </table>
-                <details>            
-                    <summary>Expresion regular (Para computación)</p></summary>
-                    <p>[&#39;^ayvw&#39;, &#39;^kvle&#39;, &#39;^v{0,1}n$&#39;]<p>
-                </details>
-        </details>
 
-</br>
-<hr>
-</br>
-<table style="width:100%">
-        <tr>
-           
-            <td colspan="3">
-                <p>También, Aquí se dejará un texto para que saques palabras y las uses en la herramienta. </p>
-                <p>**La traduccion a veces no es 100% literal**</p>
-            </td>
-             <td colspan="3">
-       <p>Ka femgechi,Tüfa mu elkünugeai kiñe wirintukun tami entual nhemül tami püneafiel küzawpeyüm mu</p>
-            </td>
-        </tr>
-  <tr>
-            
-            <td colspan="3">
-                <p>Hola hermanos hermanas. Yo me llamo Juan. Conversaremos de mi descanso de invierno (vacaciones). Yo fui al sur, por Gorbea. Fui a estudiar en un koneltun*(internado de mapuzugun). Yo voy a temuco habitualmente, pero este año no fui, en el verano iré a ver a mi familia a temico. Cuando estaba en Gorbea, hable con algunas personas, ell@s también estudian mapuzugun. Otras personas saben hablar mapuzugun. Ahora yo se más mapuzugun, así que todavía estoy feliz</p>
-            </td>
-            <td colspan="3">
-       <p>Mari mari pu peñi pu lamgen. Iñche Juan pigen. Nütxamkaw​aiñ tañi pukem ürkütun mew. Iñche amun willi mew, gorbea püle.
-Chillkatumen kiñe koneltun mew. Iñche amuken Temuco mew, welu tüfachi txipantu amulan, walüg mew ​ pemean​ tañi reñma Temuco mew.
-Mülelu gorbea mew, Nütxamkan kiñeke ​ che inchiñ, feyegün ka chillkatukeigün mapuzugun. Kakelu che kim ​ mapuzugukelu​ . Fanten mew iñche zoy kimün mapuzugun, feymew petu ayiwkülen.</p>
-            </td>
-        </tr>
-</table>
+                <div class="card">
+                    <img class="img-card" src="static/img/img-cln.png" alt="wünhelfe">
+
+
+                    <div class="container-card2">
+                        <p id="azv"> Tüfa mülei kiñeke nhemül tami azümafiel chumgechi püneafiel tüfachi küzawpeyüm </p>
+                    </div>
+                    <div class="container-card1">
+                        <p id="lkoazv">Azümam</p>
+                    </div>
+
+                </div>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+                <div class="acordeon">
+                    <div class="bloque">
+                        <div class="h4 activo">wazkü-y</div>
+                        <div class="contenido">
+
+                            <div class="puxoy">
+
+                                <div class="xoy0">wazkü</div>
+                                <div class="xoy1">y</div>
+
+                            </div>
+                            <div class="puxoy">
+
+                                <div class="xoy0">vi hervir</div>
+                                <div class="xoy1">El/Ella</div>
+
+                            </div>
+                            <details>
+                                <summary class="regex">
+                                    <p class="regex">Expresion regular (computación)</p>
+                                </summary>
+                                <div class="purx">
+
+                                    <div class="xoy0">&#39;^wazkv&#39;</div>
+                                    <div class="xoy1"> &#39;^[yi]$&#39;</div>
+
+                                </div>
+                            </details>
+
+                        </div>
+                    </div>
+
+
+                    <div class="bloque">
+
+                        <div class="h4">amu-a-iñ</div>
+                        <div class="contenido">
+
+                            <div class="puxoy">
+
+                                <div class="xoy0">amu</div>
+                                <div class="xoy1">a</div>
+                                <div class="xoy2">iñ</div>
+
+                            </div>
+                            <div class="puxoy">
+
+                                <div class="xoy0">vi irse, andar, continuar, avanzar ║</div>
+                                <div class="xoy1">El/futuro</div>
+                                <div class="xoy2">Nosotros (mas de 2 personas)</div>
+
+                            </div>
+                            <details>
+                                <summary class="regex">Expresion regular (computación) </summary>
+                                <div class="purx">
+
+                                    <div class="xoy0">&#39;^amu&#39;</div>
+                                    <div class="xoy1"> ^y{0,1}a</div>
+                                    <div class="xoy2"> ^i{0,1}y{0,1}iñ$</div>
+
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <div class="h4">ayiwküle-n</div>
+                        <div class="contenido">
+                            <div class="puxoy">
+
+                                <div class="xoy0">ayüwküle</div>
+                                <div class="xoy1">n</div>
+
+
+                            </div>
+                            <div class="puxoy">
+
+                                <div class="xoy0">vi estar alegre, estar contento ║</div>
+                                <div class="xoy1">Yo /o el verbo &#34;puro&#34;</div>
+
+                            </div>
+
+
+                            <details>
+                                <summary class="regex">Expresion regular (computación) </summary>
+
+                                <div class="purx">
+
+                                    <div class="xoy0">&#39;^ayvwkvle&#39;</div>
+                                    <div class="xoy1"> &#39;^v{0,1}n$&#39;</div>
+
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <span class="h4">ayiw-küle-n</span>
+
+                        <div class="contenido">
+                            <div class="puxoy">
+
+                                <div class="xoy0">ayüw</div>
+                                <div class="xoy1">küle</div>
+                                <div class="xoy2">n</div>
+
+
+                            </div>
+                            <div class="puxoy">
+
+                                <div class="xoy0"> vi alegrarse, contentarse ║</div>
+                                <div class="xoy1"> estar </div>
+                                <div class="xoy2">Yo /o el verbo &#34;puro&#34;</div>
+
+                            </div>
+
+
+                            <details>
+                                <summary class="regex">Expresion regular (computación) </summary>
+
+                                <div class="purx">
+
+                                    <div class="xoy0">&#39;^ayvw&#39;</div>
+                                    <div class="xoy1">&#39;^kvle&#39;</div>
+                                    <div class="xoy2"> &#39;^v{0,1}n$&#39;</div>
+
+                                </div>
+                            </details>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="eypial">
+
+                    <p> <span class="themvl">Wazküy</span> <span class="dhemvl">= hirvió </span></p>
+                    <p> <span class="themvl">Amuaiñ</span> <span class="dhemvl">= iremos </span></p>
+                    <p> <span class="themvl">Ayüwkülen</span> <span class="dhemvl"> = estoy contento/feliz </span></p>
+                </div>
+            </div>
+            <div class="tbloque">
+
+
+                <div class="card">
+                    <img class="img-card" src="static/img/img-cln.png" alt="wünhelfe">
+
+
+                    <div class="container-card2">
+                        <p id="lkogvxam">Ka femgechi,Tüfa mu elkünugeai kiñe wirintukun tami
+                            entual
+                            nhemül tami püneafiel küzawpeyüm mu</p>
+                    </div>
+                    <div class="container-card1">
+                        <p id="lkogvxam1">Gütxam</p>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="eypial">
+                    <p id="gvxam1">Mari mari pu peñi pu lamgen. Iñche Juan pigen.
+                        Nütxamkaw​aiñ   tañi pukem ürkütun mew. Iñche amun willi mew, gorbea püle.</p>
+                        <p id="gvxam2">Chillkatumen kiñe koneltun mew. Iñche amuken Temuco mew, welu
+                        tüfachi
+                        txipantu amulan, walüg mew ​ pemean​ tañi reñma Temuco mew.</p>
+                        
+                        <p id="gvxam3">Mülelu gorbea mew, Nütxamkan kiñeke ​ che inchiñ, feyegün ka
+                        chillkatukeigün
+                        mapuzugun. Kakelu che kim ​ mapuzugukelu​ . </p>
+                        <p id="gvxam4">Fanten mew iñche zoy kimün mapuzugun, feymew petu ayiwkülen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </body>
+
 </html>
