@@ -3235,7 +3235,7 @@ slotsIneke=[
              #Xoy('sI32', 'gefal', False,1,False, '<*metuno*>',True,11),
              Xoy('sI33', 'ge', False,1,False, 'la acción es sobre la persona del verbo "me dijeron" "te escucharon" ',True,11),
              Xoy('sI33', 'g(?=[iy][iy]{0,1})', False,1,False, 'la acción es sobre la persona del verbo "me dijeron" "te escucharon" ',True,11),
-             Xoy('sI34', 'u{0,1}w', False,1,False, 'hacerse algo a si mismo, transformarse en algo',True,11),
+             Xoy('sI11', 'u{0,1}w', False,1,False, 'hacerse algo a si mismo, transformarse en algo',True,11),
              Xoy('sI35', 'm[uo]', False,1,False, 'acciones de tu o uds a nosotros o yo [la terminación indica sobre quien es la acción]',True,11),
             ],
 
@@ -3263,7 +3263,7 @@ slotsIneke=[
              Xoy('sI53', 'me', False,1,False, 'ir a hacer la acción',True,13),
             ],
 
-            [Xoy('sI54', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc), puede indicar cambios',True,14),
+            [Xoy('sI7', 'tu', False,1,False, 'verbalizador, o  (come en caso de comidas, tocar en caso de instrumentos, etc), puede indicar cambios',True,14),
              Xoy('sI8', 'ka', False,1,False, 'acción que se repite o intensa, sirve para  generar verbos  Ej: nütxam a  nütxamkan',True,14),
             ],
 
@@ -3381,7 +3381,7 @@ Xoy('dO2', 'e{0,1}ntu$', True,2,False, 'sirve para hacer conjuntos de cosas',Tru
 Xoy('dO3', 'y{0,1}em$', True,2,False, 'puede servir para expresar algo que ya no corre',True,100),
 Xoy('dO4', 'pey[ve]m$', True,2,False, 'Herramienta o lugar para hacer una acción',True,100),
 Xoy('dO5', 'wem[uo]m$', True,2,False, 'con números expresa cantida de días hacia atrás',True,100),
-Xoy('dO6', 'ae{0,1}l$', True,2,False, 'puede servir para expresar propósito',True,100),
+Xoy('dO6', 'y{0,1}ae{0,1}l$', True,2,False, 'puede servir para expresar propósito',True,100),
 Xoy('dO7', '[uw]ma$', True,2,False, 'indica una persona o cosa que ya hizo la acción del verbo',True,100),
 Xoy('dO8', 'm[uo]m$', True,2,False, 'forma sustantivo que indica que un hecho ya ha sucedido',True,100),
 Xoy('dO9', 'n[ou]$', True,2,False, 'niega lo anterior, generalmente puede ser con sustantivos',True,100),

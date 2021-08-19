@@ -74,12 +74,15 @@ if (window.location.hash){
 
     h4.forEach( ( cadaH2 , i )=>{
         h4[i].addEventListener('click',()=>{
-            h4.forEach( ( cadaH4 , i )=>{
-                    h4[i].classList.remove('activo')
-                    abloque[i].classList.remove('activo')
-            })
-            h4[i].classList.add('activo')
-            abloque[i].classList.add('activo')
+
+            if (h4[i].classList.contains('activo')){
+                h4[i].classList.remove('activo')  
+                abloque[i].classList.remove('activo')
+
+            }else{
+              h4[i].classList.add('activo')  
+              abloque[i].classList.add('activo')
+            }
 
         })
     });
@@ -90,12 +93,15 @@ if (window.location.hash){
   
       h4R.forEach( ( cadaH4R , i )=>{
           h4R[i].addEventListener('click',()=>{
-              h4R.forEach( ( cadaH4R , i )=>{
-                      h4R[i].classList.remove('activo')
-                      rbloque[i].classList.remove('activo')
-              })
-              h4R[i].classList.add('activo')
-              rbloque[i].classList.add('activo')
+
+            if (h4R[i].classList.contains('activo')){
+              h4R[i].classList.remove('activo')  
+              rbloque[i].classList.remove('activo')
+
+          }else{
+            h4R[i].classList.add('activo')  
+            rbloque[i].classList.add('activo')
+          }
   
           })
       });
