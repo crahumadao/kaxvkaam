@@ -3393,7 +3393,7 @@ Xoy('dO14', 'ci$', True,2,False, 'sirve para hacer adjetivos',True,100),
 Xoy('dO15', 'we$', True,2,False, 'Herramienta o lugar para hacer una acción o donde resalta un elemento',True,100),
 Xoy('dO16', 'fe$', True,2,False, 'alguien que suele hacer esta acción como oficio por ejemplo',True,100),
 Xoy('dO17', 'el$', True,2,False, 'expresa acciones o resultados de esta en el pasado',True,100),
-Xoy('dO18', 'lu$', True,2,False, 'se puede referir a una persona o puede decir la característica de esta',True,100),
+Xoy('dO18', 'lu$', True,2,False, 'se puede referir a una persona o a una característica de esta, también sirve para decir "cuando" ',True,100),
 Xoy('dO19', 'am$', True,2,False, 'sirve para expresar propósito',True,100),
 ]
 sustantivosAdjetivos =[Xoy('SA0', 'yvw', False,0,True, ' s nariz ',False,0),
