@@ -38,13 +38,36 @@ class Koyam:  # "Roble" // Tree
             return True
         else:
             return False
-#    def __del__(self):
-#        print(f'Entugei ti {self.xoys} aliwen mu')
+
         
-    def setkomrow(self,R):
-        self.kom_row=R
+    def setkomrow(self,R,KR):        
+        self.kom_row.pop(self.kom_row.index(KR))
+        self.kom_row  = self.kom_row+[R]
+
+
+    def xawafui(self,pre_xoy,xoy):
+
+        if xoy.cemkeci == 1 or xoy.cemkeci==0  or xoy.cemkeci==1010:
+            return True
+        else:
+            kompvnefal= True
+            for kxoy in pre_xoy:
+                if kxoy.cemkeci == xoy.cemkeci:
+                    return True
+                else:
+                    if kxoy.cemkeci == 1 or kxoy.cemkeci == 0 or kxoy.cemkeci == 1010:
+                        kompvnefal = kompvnefal and True
+                    else:
+                        kompvnefal = kompvnefal and False
+            if kompvnefal:
+                return True
+            else:
+                return False
+          
+
         
     def zewmakoyamvn(self,pre_xoy=[],folil = True):  # zewmaam tati koyam
+        
         tachirakinid=[]
         pre_xoy =pre_xoy+ [self.xoy]
         if len(self.hemvl) <= 0:  # prueba si es que el largo es 0 para la palabra
@@ -72,12 +95,10 @@ class Koyam:  # "Roble" // Tree
                             if rr< len(self.kom_row):
                                 tachirakinid.append(xoy.id)
                          
-
         if not self.folil_amci :
             for xoy_set in slotsIneke:  # Se buscan coincidencias con cada lista de expresiones regulares de
-
                     for xoy in xoy_set: # Se buscan coincidencias con cada expresion regular de la lista de
-                        if xoy.id not in tachirakinid:    
+                        if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):    
                             if self.xoy.rakin <= xoy.rakin:  # que no puede ser inferor en la proxima recursión
                                 if xoy not in pre_xoy or not xoy.kineupa:   
                                     rr = len(self.kom_row)
@@ -86,16 +107,15 @@ class Koyam:  # "Roble" // Tree
                                         tachirakinid.append(xoy.id)
 
             for xoy in desinenciasInd:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
-#                    print(xoy.regex, self.hemvl)
                     if rr< len(self.kom_row):
 
                         tachirakinid.append(xoy.id)
 
             for xoy in transicionInd:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -103,7 +123,7 @@ class Koyam:  # "Roble" // Tree
 
 
             for xoy in desinenciasCond:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -111,7 +131,7 @@ class Koyam:  # "Roble" // Tree
 
 
             for xoy in transicionCond:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -119,7 +139,7 @@ class Koyam:  # "Roble" // Tree
 
 
             for xoy in desinenciasImpe:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -127,7 +147,7 @@ class Koyam:  # "Roble" // Tree
 
 
             for xoy in transicionImpe:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -135,7 +155,7 @@ class Koyam:  # "Roble" // Tree
 
 
             for xoy in otrasDesinencias:  # Se buscan coincidenciais con cada expresión regular de la lista de
-                if xoy.id not in tachirakinid:
+                if xoy.id not in tachirakinid and self.xawafui(pre_xoy,xoy):
                     rr = len(self.kom_row)
                     self.rowgetui(xoy,pre = pre_xoy)
                     if rr< len(self.kom_row):
@@ -145,15 +165,11 @@ class Koyam:  # "Roble" // Tree
         return
 
     def rowgetui(self, xoy, verbyslot = False,pre=[]):
-
         if xoy.mvli(self.hemvl):
             xoys, mvlewelu = xoy.wvzage(self.hemvl)
             wac = len(mvlewelu)==0 
-            if not wac and xoy.cemkeci ==2:
-                return
             if verbyslot:
                 wac = False
-            #print(pre,xoys)            
             kellu_koyam = Koyam(mvlewelu, rakin_row=self.rakin_row + 1, xoys=xoys,
                     folil_amci=False, wecun_amci=wac, chaw = self, xoy=xoy)
             kellu_koyam.zewmakoyamvn(pre)
@@ -161,32 +177,35 @@ class Koyam:  # "Roble" // Tree
                 self.kom_row.append(kellu_koyam)
 
 
-
-
-
     def kaxvrowvn(self):        
 
  
             if len(self.kom_row)!=0:
                 for row in self.kom_row:        
-
+                    if len(row.kom_row)>1 and not row.xoy.wecun and len(row.hemvl)==0 :
+                        try:
+                            del self.kom_row[self.kom_row.index(row)]
+                        except:
+                            print('gewelai')
                     if len(row.kom_row)==0:
-                        if len(row.hemvl)>0:
+                        if len(row.hemvl)>0 :
 
                             try:
                                 del self.kom_row[self.kom_row.index(row)]
                             except:
                                 print('gewelai')
-                            
+                        ##    
                         #else:
                         #    if not row.xoy.wecun and row.xoy.rakin>0:
                         #        try:                                
                         #            del self.kom_row[self.kom_row.index(row)]
                         #        except:
                         #            print('gewelai')
-        
-                
+                        ##
+                    
                     else:
+                      
+
                         for srow in row.kom_row:
                             srow.kaxvrowvn()
                             
@@ -197,6 +216,8 @@ class Koyam:  # "Roble" // Tree
                                 del self.kom_row[self.kom_row.index(row)]
                             except:
                                 print('gewelai')
+                    
+
 #                        elif len(row.kom_row)==0 and row.hemvl =='':
                             
 
@@ -244,10 +265,6 @@ class Koyam:  # "Roble" // Tree
                 hemvlkvf.extend(row.wirintuku_wz(pre+self.xoy.wigkazugun+'-'))
         return hemvlkvf
  
-
-
-
-
     def wirintukukoyam(self):
         for row in self.kom_row:
             pegelam=row.rakin_row * '\t' + row.xoys+'\n'
@@ -259,7 +276,6 @@ class Koyam:  # "Roble" // Tree
                         pegelam +=aa
                 else:
                     pegelam+=srow.rakin_row*'\t'+srow.xoys+'\n'
-                    #print(   srow.rakin_row*'\t'+srow.xoy)
         return pegelam
 
 
@@ -268,7 +284,7 @@ class Koyam:  # "Roble" // Tree
         if len(self.kom_row)==0:
             return 1
         for row in self.kom_row:
-            a+=rakiamwecun()
+            a+=row.rakiamwecun()
         return a
 
 

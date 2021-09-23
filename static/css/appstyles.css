@@ -95,7 +95,7 @@ p{
 .contenedor .tbloque{
     
     min-height: 60vh;
-    min-width: 640px;
+    min-width: 750px;
     border-radius: 0px 10px 10px 10px;
     background-color:rgba(30,144,255,0.6);
     /* margin:1em;*/
@@ -128,11 +128,12 @@ p{
     color: white;
     padding: 1em;
     margin: 0em 0em 0em 0em;
-    font-size: 0.5em;
+
 
 }
 
 .a1{
+    font-size: 0.75em;
     background-color:lightgreen;
  
 }
@@ -144,6 +145,7 @@ p{
 
 
 .a2{
+    font-size: 0.75em;
     background-color:lightgreen;
 }
 .a2:hover{
